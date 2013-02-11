@@ -1,0 +1,5 @@
+C:\Projects\Education\MVC4LOL\MVC4LOL.Repository\bin\Debug\MVC4LOL.Repository.dll
+C:\Projects\Education\MVC4LOL\MVC4LOL.Repository\bin\Debug\MVC4LOL.Repository.pdb
+C:\Projects\Education\MVC4LOL\MVC4LOL.Repository\obj\Debug\MVC4LOL.Repository.csprojResolveAssemblyReference.cache
+C:\Projects\Education\MVC4LOL\MVC4LOL.Repository\obj\Debug\MVC4LOL.Repository.dll
+C:\Projects\Education\MVC4LOL\MVC4LOL.Repository\obj\Debug\MVC4LOL.Repository.pdb

@@ -1,0 +1,187 @@
+﻿@model MVC4LOL.Models.Champion
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Champion</legend>
+
+    @Html.ActionLink("Update attributes", "CreateAttributes2", "Champion", new { ChampionId = Model.Id }, null);
+    <ul>
+        
+        @foreach (var a in Model.Tags){
+        <li>@Html.DisplayName(a.Name)</li>
+        }
+    </ul>
+
+    <div>
+        <img src="@Url.Action("GetPhoto", new { photoId = Model.Id })" />
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Title)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ReleaseDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ReleaseDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IP_Cost)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IP_Cost)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.RP_Cost)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RP_Cost)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Health)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Health)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.HealthPerLvl)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.HealthPerLvl)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.HealthRegen)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.HealthRegen)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.HealthRegenPerLvl)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.HealthRegenPerLvl)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Mana)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Mana)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ManaPerLvl)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ManaPerLvl)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ManaRegen)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ManaRegen)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ManaRegenPerLvl)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ManaRegenPerLvl)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Range)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Range)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Damage)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Damage)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DamagePerLvl)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DamagePerLvl)
+    </div>
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.AtkSpeed)
+    </div>
+    <div class="display-field">
+        @Model.AtkSpeed
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.AtsSpeedPerLvl)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AtsSpeedPerLvl)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Armor)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Armor)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ArmorPerLvl)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ArmorPerLvl)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MagicResist)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MagicResist)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MagicResistPerLvl)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MagicResistPerLvl)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MoveSpeed)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MoveSpeed)
+    </div>
+</fieldset>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |*@
+    @Html.ActionLink("Back to List", "Index")
+</p>

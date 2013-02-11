@@ -1,0 +1,185 @@
+﻿@model MVC4LOL.Models.ViewModels.ChampionsViewModel
+
+@{
+    ViewBag.Title = "Champions2";
+}
+
+<h2>Champions2</h2>
+
+<ul>
+@foreach (var item in Model.Tags)
+{ 
+    <li>@Html.CheckBox("Check"+@item.ToString())  @item</li>
+}
+</ul>
+<fieldset>
+    <legend>ChampionsViewModel</legend>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Champions.First().Image)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Champions.First().Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Champions.First().Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Champions.First().ReleaseDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Champions.First().IP_Cost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Champions.First().RP_Cost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Champions.First().Health)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Champions.First().HealthPerLvl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Champions.First().HealthRegen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Champions.First().HealthRegenPerLvl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Champions.First().Mana)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Champions.First().ManaPerLvl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Champions.First().ManaRegen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Champions.First().ManaRegenPerLvl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Champions.First().Range)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Champions.First().Damage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Champions.First().DamagePerLvl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Champions.First().AtkSpeed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Champions.First().AtsSpeedPerLvl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Champions.First().Armor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Champions.First().ArmorPerLvl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Champions.First().MagicResist)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Champions.First().MagicResistPerLvl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Champions.First().MoveSpeed)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.Champions) {
+    <tr>
+        <td>
+            <img src="@Url.Action("GetPhoto", new { photoId = item.Id })" />
+        </td>
+        <td>
+            @Html.ActionLink(item.Name, "Details", "Champion", new { name = item.Name }, null)
+            @*@Html.DisplayFor(modelItem => item.Name)*@
+        </td>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.Title)*@
+            @Html.ActionLink(item.Title, "Details2", "Champion", new {id = item.Id}, null)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReleaseDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IP_Cost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RP_Cost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Health)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HealthPerLvl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HealthRegen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HealthRegenPerLvl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mana)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ManaPerLvl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ManaRegen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ManaRegenPerLvl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Range)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Damage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DamagePerLvl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AtkSpeed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AtsSpeedPerLvl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Armor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ArmorPerLvl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MagicResist)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MagicResistPerLvl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MoveSpeed)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+
+            @Html.ActionLink("Details2", "Details2", new { id = item.Id})
+        </td>
+    </tr>
+}
+
+</table>
