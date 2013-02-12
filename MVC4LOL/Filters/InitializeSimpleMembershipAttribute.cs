@@ -5,6 +5,7 @@ using System.Threading;
 using System.Web.Mvc;
 using WebMatrix.WebData;
 using MVC4LOL.Models;
+using MVC4LOL.Repository;
 
 namespace MVC4LOL.Filters
 {

@@ -10,6 +10,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using MVC4LOL.Helpers;
 using MVC4LOL.Models.ViewModels;
+using MVC4LOL.Repository;
 
 namespace MVC4LOL.Controllers
 {

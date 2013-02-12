@@ -50,3 +50,9 @@ C:\Projects\Education\MVC4LOL\MVC4LOL\obj\Debug\MVC4LOL.pdb
 C:\Projects\Education\MVC4LOL\MVC4LOL\bin\HtmlAgilityPack.dll
 C:\Projects\Education\MVC4LOL\MVC4LOL\bin\HtmlAgilityPack.pdb
 C:\Projects\Education\MVC4LOL\MVC4LOL\bin\HtmlAgilityPack.xml
+C:\Projects\Education\MVC4LOL\MVC4LOL\bin\MV4LOL.Model.dll
+C:\Projects\Education\MVC4LOL\MVC4LOL\bin\MVC4LOL.Repository.dll
+C:\Projects\Education\MVC4LOL\MVC4LOL\bin\MV4LOL.Model.pdb
+C:\Projects\Education\MVC4LOL\MVC4LOL\bin\MVC4LOL.Repository.pdb
+C:\Projects\Education\MVC4LOL\MVC4LOL\bin\MVC4LOL.CRAWLER.dll
+C:\Projects\Education\MVC4LOL\MVC4LOL\bin\MVC4LOL.CRAWLER.pdb

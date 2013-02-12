@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MVC4LOL.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -8,34 +9,36 @@ using System.Web.Security;
 
 namespace MVC4LOL.Models
 {
-    public class UsersContext : DbContext
-    {
-        public UsersContext()
-            : base("DefaultConnection")
-        {
-        }
+    // Moved to .Repository
+    //public class UsersContext : DbContext
+    //{
+    //    public UsersContext()
+    //        : base("DefaultConnection")
+    //    {
+    //    }
 
-        public DbSet<UserProfile> UserProfiles { get; set; }
-        public DbSet<Champion> Champions { get; set; }
-        public DbSet<Skill> Skills { get; set; }
-        public DbSet<Tag> Tags { get; set; }
+    //    public DbSet<UserProfile> UserProfiles { get; set; }
+    //    public DbSet<Champion> Champions { get; set; }
+    //    public DbSet<Skill> Skills { get; set; }
+    //    public DbSet<Tag> Tags { get; set; }
 
-        protected override void OnModelCreating(System.Data.Entity.DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Champion>().Property(o => o.AtkSpeed).HasPrecision(8, 3);
+    //    protected override void OnModelCreating(System.Data.Entity.DbModelBuilder modelBuilder)
+    //    {
+    //        modelBuilder.Entity<Champion>().Property(o => o.AtkSpeed).HasPrecision(8, 3);
 
-            base.OnModelCreating(modelBuilder);
-        }
-    }
+    //        base.OnModelCreating(modelBuilder);
+    //    }
+    //}
 
-    [Table("UserProfile")]
-    public class UserProfile
-    {
-        [Key]
-        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
-        public int UserId { get; set; }
-        public string UserName { get; set; }
-    }
+    // Moved To Model.POCO
+    //[Table("UserProfile")] 
+    //public class UserProfile
+    //{
+    //    [Key]
+    //    [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
+    //    public int UserId { get; set; }
+    //    public string UserName { get; set; }
+    //}
 
     public class RegisterExternalLoginModel
     {

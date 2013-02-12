@@ -10,6 +10,8 @@ using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
 using MVC4LOL.Filters;
 using MVC4LOL.Models;
+using MVC4LOL.Model;
+using MVC4LOL.Repository;
 
 namespace MVC4LOL.Controllers
 {

@@ -1,5 +1,7 @@
-﻿using MVC4LOL.Models;
+﻿using MVC4LOL.Model;
+using MVC4LOL.Models;
 using MVC4LOL.Models.ViewModels;
+using MVC4LOL.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,10 +44,16 @@ namespace MVC4LOL.Controllers
             return View("Details", model);
         }
 
-        [HttpGet]
-        public ActionResult CreateAttributes2(Int32 championId)
+        public ActionResult Tags(Int32 championId)
         {
-            var modelView = new EditAttributesViewModel();
+            var model = _cx.Tags.Where(o => o.ChampionId == championId);
+            return View("Tags", model);
+        }
+
+        [HttpGet]
+        public ActionResult CreateTag(Int32 championId)
+        {
+            var modelView = new EditTagsViewModel();
             modelView.ChampionId = championId;
 
             //var model = _cx.Attributes.Where(o => o.ChampionId == championId);
@@ -53,19 +61,31 @@ namespace MVC4LOL.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateAttributes2(EditAttributesViewModel model)
+        public ActionResult CreateTag(EditTagsViewModel model)
         {
             if (ModelState.IsValid)
             {
-                MVC4LOL.Models.Tag tag = new Models.Tag();
+                Tag tag = new Tag();
                 tag.ChampionId = model.ChampionId;
                 tag.UserId = 1;
                 tag.Name = model.Name;
 
                 _cx.Tags.Add(tag);
                 _cx.SaveChanges();
+                return Details2(model.ChampionId);
             }
-            return View(model);
+            else
+            {
+                return View(model);
+            }
+        }
+
+        public ActionResult DeleteTag(Int32 tagId)
+        {
+            Tag tag = _cx.Tags.First(o => o.Id == tagId);
+            _cx.Tags.Remove(tag);
+            _cx.SaveChanges();
+            return Tags(tag.ChampionId);
         }
 
         public ActionResult GetPhoto(int photoId)

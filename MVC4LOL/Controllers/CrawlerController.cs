@@ -23,7 +23,7 @@ namespace MVC4LOL.Controllers
 
         public ActionResult Wikia()
         {
-            //MVC4LOL.CRAWLER.Wikia.HarvestData();
+            MVC4LOL.CRAWLER.Wikia.HarvestData();
             return View();
         }
 

@@ -1,0 +1,51 @@
+﻿@model MVC4LOL.Models.EditTagsViewModel
+
+@{
+    ViewBag.Title = "";
+}
+
+<h2>Create Tag</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>EditTagsViewModel</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ChampionId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ChampionId)
+            @Html.ValidationMessageFor(model => model.ChampionId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UserId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UserId)
+            @Html.ValidationMessageFor(model => model.UserId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

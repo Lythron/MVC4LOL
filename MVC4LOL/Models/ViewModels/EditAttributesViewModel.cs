@@ -6,7 +6,7 @@ using System.Web;
 
 namespace MVC4LOL.Models
 {
-    public class EditAttributesViewModel
+    public class EditTagsViewModel
     {
         public Int32 ChampionId { get; set; }
         public Int32 UserId { get; set; }

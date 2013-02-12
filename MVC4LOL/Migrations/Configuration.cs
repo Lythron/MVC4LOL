@@ -1,20 +1,22 @@
 namespace MVC4LOL.Migrations
 {
+    using MVC4LOL.Model;
     using MVC4LOL.Models;
+    using MVC4LOL.Repository;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
     using System.Web.Security;
 
-    internal sealed class Configuration : /*DbMigrationsConfiguration<MVC4LOL.Models.MVC4LOLContext>, */ DbMigrationsConfiguration<MVC4LOL.Models.UsersContext>
+    internal sealed class Configuration : /*DbMigrationsConfiguration<MVC4LOL.Models.MVC4LOLContext>, */ DbMigrationsConfiguration<UsersContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(MVC4LOL.Models.UsersContext context)
+        protected override void Seed(UsersContext context)
         {
             //  This method will be called after migrating to the latest version.
 

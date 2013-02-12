@@ -59,9 +59,13 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MVC4LOL\MVC4LOL.csproj">
-      <Project>{00905215-20bf-4575-a0d7-d282133c7ecd}</Project>
-      <Name>MVC4LOL</Name>
+    <ProjectReference Include="..\MV4LOL.Model\MVC4LOL.Model.csproj">
+      <Project>{731d5d2a-394e-4b91-99b1-faccd43825ec}</Project>
+      <Name>MVC4LOL.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MVC4LOL.Repository\MVC4LOL.Repository.csproj">
+      <Project>{b3c2da71-4806-4701-8214-5596c53b7fc7}</Project>
+      <Name>MVC4LOL.Repository</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

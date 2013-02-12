@@ -1,4 +1,4 @@
-﻿@model MVC4LOL.Models.Champion
+﻿@model MVC4LOL.Model.Champion
 
 @{
     ViewBag.Title = "Details";
@@ -9,7 +9,14 @@
 <fieldset>
     <legend>Champion</legend>
 
-    @Html.ActionLink("Update attributes", "CreateAttributes2", "Champion", new { ChampionId = Model.Id }, null);
+    @if (Model.Tags.Count == 0)
+    {
+        @Html.ActionLink("Add Tag", "CreateTag", "Champion", new { ChampionId = Model.Id }, null);
+    }
+    else
+    {    
+        @Html.ActionLink("Tags", "Tags", "Champion", new { ChampionId = Model.Id }, null);
+    }
     <ul>
         
         @foreach (var a in Model.Tags){

@@ -103,9 +103,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MVC4LOL\MVC4LOL.csproj">
+    <ProjectReference Include="..\MVC4LOL\MVC4LOL.Web.csproj">
       <Project>{00905215-20BF-4575-A0D7-D282133C7ECD}</Project>
-      <Name>MVC4LOL</Name>
+      <Name>MVC4LOL.Web</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
