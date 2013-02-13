@@ -107,7 +107,7 @@
         </td>
         <td>
             @*@Html.DisplayFor(modelItem => item.Title)*@
-            @Html.ActionLink(item.Title, "Details2", "Champion", new {id = item.Id}, null)
+            @Html.ActionLink(item.Title, "Details2", "Champion", new {championId = item.Id}, null)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ReleaseDate)

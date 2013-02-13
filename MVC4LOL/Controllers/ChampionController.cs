@@ -37,9 +37,9 @@ namespace MVC4LOL.Controllers
             return View(model);
         }
 
-        public ActionResult Details2(Int32 id)
+        public ActionResult Details2(Int32 championId)
         {
-            var model = _cx.Champions.Where(o => o.Id == id).FirstOrDefault();
+            var model = _cx.Champions.Where(o => o.Id == championId).FirstOrDefault();
 
             return View("Details", model);
         }
