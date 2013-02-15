@@ -23,24 +23,32 @@ namespace MVC4LOL.Controllers
 
         public ActionResult Index()
         {
+            
             var model = new ChampionsViewModel();
             var userId = 1;
-            model.Champions = _cx.Champions.ToList();
+            model.Champions = _cx.ChampionData.Where(o => o.Version == "preseason 3").ToList();
             model.Tags = _cx.Tags.Where(o => o.UserId == userId).GroupBy(o => o.Name).Select(o => o.Key).ToList();
             return View(model);
         }
-        
+
         public ActionResult Details(String name)
         {
-            var model = _cx.Champions.Where(o => o.Name == name).FirstOrDefault();
+            Int32 championId = _cx.Champions.FirstOrDefault(o => o.Name.Equals(name)).Id;
+            var userId = 1;
+            var model = new ChampionDetailsViewModel();
+            model.Tags = _cx.Tags.Where(o => o.UserId == userId && o.ChampionId == championId).ToList();
+            model.Champion = _cx.ChampionData.Where(o => o.ChampionId == championId).FirstOrDefault();
 
             return View(model);
         }
 
         public ActionResult Details2(Int32 championId)
         {
-            var model = _cx.Champions.Where(o => o.Id == championId).FirstOrDefault();
-
+            var userId = 1;
+            var model = new ChampionDetailsViewModel();
+            model.Tags = _cx.Tags.Where(o => o.UserId == userId && o.ChampionId == championId).ToList();
+            model.Champion = _cx.ChampionData.Where(o => o.ChampionId == championId).FirstOrDefault();
+            
             return View("Details", model);
         }
 
@@ -90,7 +98,7 @@ namespace MVC4LOL.Controllers
 
         public ActionResult GetPhoto(int photoId)
         {
-            byte[] photo = _cx.Champions.First(c => c.Id == photoId).Image;
+            byte[] photo = _cx.ChampionData.First(c => c.Id == photoId).Image;
             return photo != null ? File(photo, "image/jpeg") : (ActionResult)(null);
         }
 

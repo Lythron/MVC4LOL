@@ -56,3 +56,7 @@ C:\Projects\Education\MVC4LOL\MVC4LOL\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
 C:\Projects\Education\MVC4LOL\MVC4LOL\obj\Debug\MVC4LOL.Web.csprojResolveAssemblyReference.cache
 C:\Projects\Education\MVC4LOL\MVC4LOL\obj\Debug\MVC4LOL.dll
 C:\Projects\Education\MVC4LOL\MVC4LOL\obj\Debug\MVC4LOL.pdb
+C:\Projects\Education\MVC4LOL\MVC4LOL\obj\Debug\MVC4LOL.Migrations.typo.resources
+C:\Projects\Education\MVC4LOL\MVC4LOL\obj\Debug\MVC4LOL.Web.csproj.GenerateResource.Cache
+C:\Projects\Education\MVC4LOL\MVC4LOL\obj\Debug\MVC4LOL.Migrations.championclean.resources
+C:\Projects\Education\MVC4LOL\MVC4LOL\obj\Debug\MVC4LOL.Migrations.ChampionDataNoTag.resources

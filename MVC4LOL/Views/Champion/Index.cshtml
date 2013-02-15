@@ -76,7 +76,7 @@
             @Html.DisplayNameFor(model => model.Champions.First().AtkSpeed)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Champions.First().AtsSpeedPerLvl)
+            @Html.DisplayNameFor(model => model.Champions.First().AtkSpeedPerLvl)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Champions.First().Armor)
@@ -107,7 +107,7 @@
         </td>
         <td>
             @*@Html.DisplayFor(modelItem => item.Title)*@
-            @Html.ActionLink(item.Title, "Details2", "Champion", new {championId = item.Id}, null)
+            @Html.ActionLink(item.Title, "Details2", "Champion", new {championId = item.ChampionId}, null)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ReleaseDate)
@@ -155,7 +155,7 @@
             @Html.DisplayFor(modelItem => item.AtkSpeed)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.AtsSpeedPerLvl)
+            @Html.DisplayFor(modelItem => item.AtkSpeedPerLvl)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Armor)

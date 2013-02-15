@@ -13,7 +13,7 @@ namespace MVC4LOL.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(UsersContext context)

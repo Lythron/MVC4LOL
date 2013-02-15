@@ -8,7 +8,7 @@ namespace MVC4LOL.Models.ViewModels
 {
     public class ChampionsViewModel
     {
-        public List<Champion> Champions { get; set; }
+        public List<ChampionData> Champions { get; set; }
         public List<String> Tags { get; set; }
     }
 }

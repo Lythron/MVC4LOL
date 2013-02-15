@@ -173,9 +173,22 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Expando.cs" />
+    <Compile Include="Migrations\201302141252259_typo.cs" />
+    <Compile Include="Migrations\201302141252259_typo.Designer.cs">
+      <DependentUpon>201302141252259_typo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201302141323280_championclean.cs" />
+    <Compile Include="Migrations\201302141323280_championclean.Designer.cs">
+      <DependentUpon>201302141323280_championclean.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201302141356463_ChampionDataNoTag.cs" />
+    <Compile Include="Migrations\201302141356463_ChampionDataNoTag.Designer.cs">
+      <DependentUpon>201302141356463_ChampionDataNoTag.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Champion.cs" />
+    <Compile Include="Models\ViewModels\ChampionDetailsViewModel.cs" />
     <Compile Include="Models\ViewModels\ChampionsViewModel.cs" />
     <Compile Include="Models\ViewModels\EditAttributesViewModel.cs" />
     <Compile Include="Models\Wikia.cs" />
@@ -319,6 +332,17 @@
       <Project>{b3c2da71-4806-4701-8214-5596c53b7fc7}</Project>
       <Name>MVC4LOL.Repository</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201302141252259_typo.resx">
+      <DependentUpon>201302141252259_typo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201302141323280_championclean.resx">
+      <DependentUpon>201302141323280_championclean.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201302141356463_ChampionDataNoTag.resx">
+      <DependentUpon>201302141356463_ChampionDataNoTag.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

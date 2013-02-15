@@ -1,4 +1,4 @@
-﻿@model MVC4LOL.Model.Champion
+﻿@model MVC4LOL.Models.ViewModels.ChampionDetailsViewModel
 
 @{
     ViewBag.Title = "Details";
@@ -11,11 +11,11 @@
 
     @if (Model.Tags.Count == 0)
     {
-        @Html.ActionLink("Add Tag", "CreateTag", "Champion", new { ChampionId = Model.Id }, null);
+        @Html.ActionLink("Add Tag", "CreateTag", "Champion", new { ChampionId = Model.Champion.ChampionId }, null);
     }
     else
     {    
-        @Html.ActionLink("Tags", "Tags", "Champion", new { ChampionId = Model.Id }, null);
+        @Html.ActionLink("Tags", "Tags", "Champion", new { ChampionId = Model.Champion.ChampionId }, null);
     }
     <ul>
         
@@ -25,167 +25,167 @@
     </ul>
 
     <div>
-        <img src="@Url.Action("GetPhoto", new { photoId = Model.Id })" />
+        <img src="@Url.Action("GetPhoto", new { photoId = Model.Champion.Id })" />
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Name)
+         @Html.DisplayNameFor(model => model.Champion.Name)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Name)
+        @Html.DisplayFor(model => model.Champion.Name)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Title)
+         @Html.DisplayNameFor(model => model.Champion.Title)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Title)
+        @Html.DisplayFor(model => model.Champion.Title)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.ReleaseDate)
+         @Html.DisplayNameFor(model => model.Champion.ReleaseDate)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.ReleaseDate)
+        @Html.DisplayFor(model => model.Champion.ReleaseDate)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.IP_Cost)
+         @Html.DisplayNameFor(model => model.Champion.IP_Cost)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.IP_Cost)
+        @Html.DisplayFor(model => model.Champion.IP_Cost)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.RP_Cost)
+         @Html.DisplayNameFor(model => model.Champion.RP_Cost)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.RP_Cost)
+        @Html.DisplayFor(model => model.Champion.RP_Cost)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Health)
+         @Html.DisplayNameFor(model => model.Champion.Health)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Health)
+        @Html.DisplayFor(model => model.Champion.Health)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.HealthPerLvl)
+         @Html.DisplayNameFor(model => model.Champion.HealthPerLvl)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.HealthPerLvl)
+        @Html.DisplayFor(model => model.Champion.HealthPerLvl)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.HealthRegen)
+         @Html.DisplayNameFor(model => model.Champion.HealthRegen)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.HealthRegen)
+        @Html.DisplayFor(model => model.Champion.HealthRegen)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.HealthRegenPerLvl)
+         @Html.DisplayNameFor(model => model.Champion.HealthRegenPerLvl)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.HealthRegenPerLvl)
+        @Html.DisplayFor(model => model.Champion.HealthRegenPerLvl)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Mana)
+         @Html.DisplayNameFor(model => model.Champion.Mana)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Mana)
+        @Html.DisplayFor(model => model.Champion.Mana)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.ManaPerLvl)
+         @Html.DisplayNameFor(model => model.Champion.ManaPerLvl)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.ManaPerLvl)
+        @Html.DisplayFor(model => model.Champion.ManaPerLvl)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.ManaRegen)
+         @Html.DisplayNameFor(model => model.Champion.ManaRegen)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.ManaRegen)
+        @Html.DisplayFor(model => model.Champion.ManaRegen)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.ManaRegenPerLvl)
+         @Html.DisplayNameFor(model => model.Champion.ManaRegenPerLvl)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.ManaRegenPerLvl)
+        @Html.DisplayFor(model => model.Champion.ManaRegenPerLvl)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Range)
+         @Html.DisplayNameFor(model => model.Champion.Range)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Range)
+        @Html.DisplayFor(model => model.Champion.Range)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Damage)
+         @Html.DisplayNameFor(model => model.Champion.Damage)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Damage)
+        @Html.DisplayFor(model => model.Champion.Damage)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.DamagePerLvl)
+         @Html.DisplayNameFor(model => model.Champion.DamagePerLvl)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.DamagePerLvl)
+        @Html.DisplayFor(model => model.Champion.DamagePerLvl)
     </div>
     <div class="display-label">
-        @Html.DisplayNameFor(model => model.AtkSpeed)
+        @Html.DisplayNameFor(model => model.Champion.AtkSpeed)
     </div>
     <div class="display-field">
-        @Model.AtkSpeed
+        @Model.Champion.AtkSpeed
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.AtsSpeedPerLvl)
+         @Html.DisplayNameFor(model => model.Champion.AtkSpeedPerLvl)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.AtsSpeedPerLvl)
+        @Html.DisplayFor(model => model.Champion.AtkSpeedPerLvl)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Armor)
+         @Html.DisplayNameFor(model => model.Champion.Armor)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Armor)
+        @Html.DisplayFor(model => model.Champion.Armor)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.ArmorPerLvl)
+         @Html.DisplayNameFor(model => model.Champion.ArmorPerLvl)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.ArmorPerLvl)
+        @Html.DisplayFor(model => model.Champion.ArmorPerLvl)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.MagicResist)
+         @Html.DisplayNameFor(model => model.Champion.MagicResist)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.MagicResist)
+        @Html.DisplayFor(model => model.Champion.MagicResist)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.MagicResistPerLvl)
+         @Html.DisplayNameFor(model => model.Champion.MagicResistPerLvl)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.MagicResistPerLvl)
+        @Html.DisplayFor(model => model.Champion.MagicResistPerLvl)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.MoveSpeed)
+         @Html.DisplayNameFor(model => model.Champion.MoveSpeed)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.MoveSpeed)
+        @Html.DisplayFor(model => model.Champion.MoveSpeed)
     </div>
 </fieldset>
 <p>

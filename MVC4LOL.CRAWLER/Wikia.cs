@@ -118,7 +118,7 @@ namespace MVC4LOL.CRAWLER
             HtmlDocument doc = new HtmlDocument();
             doc.LoadHtml(html);
 
-            Champion champion = new Champion();
+            ChampionData champion = new ChampionData();
 
             HtmlNode upperTable = doc.DocumentNode.SelectSingleNode("//table[@id='champion_info-upper']");
 
@@ -167,7 +167,7 @@ namespace MVC4LOL.CRAWLER
             {
             }
 
-            champion.Tags = new List<MVC4LOL.Model.Tag>();
+            //champion.Tags = new List<MVC4LOL.Model.Tag>();
             champion.Skills = new List<Skill>();
 
             HtmlNode tableStatistic = doc.DocumentNode.SelectSingleNode("//table[tr/th/span[span = 'Statistics']]");
@@ -210,7 +210,7 @@ namespace MVC4LOL.CRAWLER
                 String attackSpeedString = tableStatistic.SelectSingleNode("//tr/td[span[a = 'Attack speed']]/following-sibling::td").InnerText.Trim();
                 Match attackSpeedMatch = Regex.Match(attackSpeedString, @"([\d\.]*) ?\( ?\+([\d\.]*)% ?\)");
                 champion.AtkSpeed = Parse(attackSpeedMatch.Groups[1].Value);
-                champion.AtsSpeedPerLvl = Parse(attackSpeedMatch.Groups[2].Value);
+                champion.AtkSpeedPerLvl = Parse(attackSpeedMatch.Groups[2].Value);
             }
             catch
             {
@@ -282,7 +282,7 @@ namespace MVC4LOL.CRAWLER
 
             using (UsersContext cx = new UsersContext())
             {
-                cx.Champions.Add(champion);
+                cx.ChampionData.Add(champion);
                 cx.SaveChanges();
             }
 

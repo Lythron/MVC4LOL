@@ -16,13 +16,14 @@ namespace MVC4LOL.Repository
         }
 
         public DbSet<UserProfile> UserProfiles { get; set; }
+        public DbSet<ChampionData> ChampionData { get; set; }
         public DbSet<Champion> Champions { get; set; }
         public DbSet<Skill> Skills { get; set; }
         public DbSet<Tag> Tags { get; set; }
 
         protected override void OnModelCreating(System.Data.Entity.DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Champion>().Property(o => o.AtkSpeed).HasPrecision(8, 3);
+            modelBuilder.Entity<ChampionData>().Property(o => o.AtkSpeed).HasPrecision(8, 3);
 
             base.OnModelCreating(modelBuilder);
         }
