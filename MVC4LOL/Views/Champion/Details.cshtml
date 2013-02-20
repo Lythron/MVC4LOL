@@ -11,181 +11,188 @@
 
     @if (Model.Tags.Count == 0)
     {
-        @Html.ActionLink("Add Tag", "CreateTag", "Champion", new { ChampionId = Model.Champion.ChampionId }, null);
+        @Html.ActionLink("Add Tag", "CreateTag", "Champion", new { ChampionId = Model.Champions.First().ChampionId }, null);
     }
     else
     {    
-        @Html.ActionLink("Tags", "Tags", "Champion", new { ChampionId = Model.Champion.ChampionId }, null);
+        @Html.ActionLink("Tags", "Tags", "Champion", new { ChampionId = Model.Champions.First().ChampionId }, null);
     }
+    
+    @foreach (var patch in Model.Patches)
+    {
+        @Html.RadioButton("Radio" + @patch.Name, patch.Id) @patch.Name
+    }
+
+    @{Int32 selectedPatchId = 1; }
+    
     <ul>
-        
         @foreach (var a in Model.Tags){
         <li>@Html.DisplayName(a.Name)</li>
         }
     </ul>
 
     <div>
-        <img src="@Url.Action("GetPhoto", new { photoId = Model.Champion.Id })" />
+        <img src="@Url.Action("GetPhoto", new { photoId = Model.Champions.First(o => o.PatchVersionId == Model.SelectedPatchId).Id })" />
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Champion.Name)
+         @Html.DisplayNameFor(model => model.Champions.First(o => o.PatchVersionId == Model.SelectedPatchId).Name)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Champion.Name)
+        @Html.DisplayFor(model => model.Champions.First(o => o.PatchVersionId == Model.SelectedPatchId).Name)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Champion.Title)
+         @Html.DisplayNameFor(model => model.Champions.First(o => o.PatchVersionId == Model.SelectedPatchId).Title)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Champion.Title)
+        @Html.DisplayFor(model => model.Champions.First(o => o.PatchVersionId == Model.SelectedPatchId).Title)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Champion.ReleaseDate)
+         @Html.DisplayNameFor(model => model.Champions.First(o => o.PatchVersionId == Model.SelectedPatchId).ReleaseDate)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Champion.ReleaseDate)
+        @Html.DisplayFor(model => model.Champions.First(o => o.PatchVersionId == Model.SelectedPatchId).ReleaseDate)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Champion.IP_Cost)
+         @Html.DisplayNameFor(model => model.Champions.First(o => o.PatchVersionId == Model.SelectedPatchId).IP_Cost)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Champion.IP_Cost)
+        @Html.DisplayFor(model => model.Champions.First(o => o.PatchVersionId == Model.SelectedPatchId).IP_Cost)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Champion.RP_Cost)
+         @Html.DisplayNameFor(model => model.Champions.First(o => o.PatchVersionId == Model.SelectedPatchId).RP_Cost)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Champion.RP_Cost)
+        @Html.DisplayFor(model => model.Champions.First(o => o.PatchVersionId == Model.SelectedPatchId).RP_Cost)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Champion.Health)
+         @Html.DisplayNameFor(model => model.Champions.First(o => o.PatchVersionId == Model.SelectedPatchId).Health)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Champion.Health)
+        @Html.DisplayFor(model => model.Champions.First(o => o.PatchVersionId == Model.SelectedPatchId).Health)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Champion.HealthPerLvl)
+         @Html.DisplayNameFor(model => model.Champions.First(o => o.PatchVersionId == Model.SelectedPatchId).HealthPerLvl)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Champion.HealthPerLvl)
+        @Html.DisplayFor(model => model.Champions.First(o => o.PatchVersionId == Model.SelectedPatchId).HealthPerLvl)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Champion.HealthRegen)
+         @Html.DisplayNameFor(model => model.Champions.First(o => o.PatchVersionId == Model.SelectedPatchId).HealthRegen)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Champion.HealthRegen)
+        @Html.DisplayFor(model => model.Champions.First(o => o.PatchVersionId == Model.SelectedPatchId).HealthRegen)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Champion.HealthRegenPerLvl)
+         @Html.DisplayNameFor(model => model.Champions.First(o => o.PatchVersionId == Model.SelectedPatchId).HealthRegenPerLvl)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Champion.HealthRegenPerLvl)
+        @Html.DisplayFor(model => model.Champions.First(o => o.PatchVersionId == Model.SelectedPatchId).HealthRegenPerLvl)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Champion.Mana)
+         @Html.DisplayNameFor(model => model.Champions.First(o => o.PatchVersionId == Model.SelectedPatchId).Mana)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Champion.Mana)
+        @Html.DisplayFor(model => model.Champions.First(o => o.PatchVersionId == Model.SelectedPatchId).Mana)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Champion.ManaPerLvl)
+         @Html.DisplayNameFor(model => model.Champions.First(o => o.PatchVersionId == Model.SelectedPatchId).ManaPerLvl)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Champion.ManaPerLvl)
+        @Html.DisplayFor(model => model.Champions.First(o => o.PatchVersionId == Model.SelectedPatchId).ManaPerLvl)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Champion.ManaRegen)
+         @Html.DisplayNameFor(model => model.Champions.First(o => o.PatchVersionId == Model.SelectedPatchId).ManaRegen)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Champion.ManaRegen)
+        @Html.DisplayFor(model => model.Champions.First(o => o.PatchVersionId == Model.SelectedPatchId).ManaRegen)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Champion.ManaRegenPerLvl)
+         @Html.DisplayNameFor(model => model.Champions.First(o => o.PatchVersionId == Model.SelectedPatchId).ManaRegenPerLvl)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Champion.ManaRegenPerLvl)
+        @Html.DisplayFor(model => model.Champions.First(o => o.PatchVersionId == Model.SelectedPatchId).ManaRegenPerLvl)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Champion.Range)
+         @Html.DisplayNameFor(model => model.Champions.First(o => o.PatchVersionId == Model.SelectedPatchId).Range)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Champion.Range)
+        @Html.DisplayFor(model => model.Champions.First(o => o.PatchVersionId == Model.SelectedPatchId).Range)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Champion.Damage)
+         @Html.DisplayNameFor(model => model.Champions.First(o => o.PatchVersionId == Model.SelectedPatchId).Damage)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Champion.Damage)
+        @Html.DisplayFor(model => model.Champions.First(o => o.PatchVersionId == Model.SelectedPatchId).Damage)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Champion.DamagePerLvl)
+         @Html.DisplayNameFor(model => model.Champions.First(o => o.PatchVersionId == Model.SelectedPatchId).DamagePerLvl)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Champion.DamagePerLvl)
+        @Html.DisplayFor(model => model.Champions.First(o => o.PatchVersionId == Model.SelectedPatchId).DamagePerLvl)
     </div>
     <div class="display-label">
-        @Html.DisplayNameFor(model => model.Champion.AtkSpeed)
+        @Html.DisplayNameFor(model => model.Champions.First(o => o.PatchVersionId == Model.SelectedPatchId).AtkSpeed)
     </div>
     <div class="display-field">
-        @Model.Champion.AtkSpeed
+        @Model.Champions.First(o => o.PatchVersionId == Model.SelectedPatchId).AtkSpeed
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Champion.AtkSpeedPerLvl)
+         @Html.DisplayNameFor(model => model.Champions.First(o => o.PatchVersionId == Model.SelectedPatchId).AtkSpeedPerLvl)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Champion.AtkSpeedPerLvl)
+        @Html.DisplayFor(model => model.Champions.First(o => o.PatchVersionId == Model.SelectedPatchId).AtkSpeedPerLvl)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Champion.Armor)
+         @Html.DisplayNameFor(model => model.Champions.First(o => o.PatchVersionId == Model.SelectedPatchId).Armor)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Champion.Armor)
+        @Html.DisplayFor(model => model.Champions.First(o => o.PatchVersionId == Model.SelectedPatchId).Armor)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Champion.ArmorPerLvl)
+         @Html.DisplayNameFor(model => model.Champions.First(o => o.PatchVersionId == Model.SelectedPatchId).ArmorPerLvl)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Champion.ArmorPerLvl)
+        @Html.DisplayFor(model => model.Champions.First(o => o.PatchVersionId == Model.SelectedPatchId).ArmorPerLvl)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Champion.MagicResist)
+         @Html.DisplayNameFor(model => model.Champions.First(o => o.PatchVersionId == Model.SelectedPatchId).MagicResist)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Champion.MagicResist)
+        @Html.DisplayFor(model => model.Champions.First(o => o.PatchVersionId == Model.SelectedPatchId).MagicResist)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Champion.MagicResistPerLvl)
+         @Html.DisplayNameFor(model => model.Champions.First(o => o.PatchVersionId == Model.SelectedPatchId).MagicResistPerLvl)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Champion.MagicResistPerLvl)
+        @Html.DisplayFor(model => model.Champions.First(o => o.PatchVersionId == Model.SelectedPatchId).MagicResistPerLvl)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Champion.MoveSpeed)
+         @Html.DisplayNameFor(model => model.Champions.First(o => o.PatchVersionId == Model.SelectedPatchId).MoveSpeed)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Champion.MoveSpeed)
+        @Html.DisplayFor(model => model.Champions.First(o => o.PatchVersionId == Model.SelectedPatchId).MoveSpeed)
     </div>
 </fieldset>
 <p>

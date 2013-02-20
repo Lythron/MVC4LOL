@@ -48,8 +48,10 @@ namespace MVC4LOL.Model
         public Decimal MagicResistPerLvl { get; set; }
         public Decimal MoveSpeed { get; set; }
 
-        public virtual List<Skill> Skills { get; set; }
+        //public virtual List<Skill> Skills { get; set; }
 
-        public String Version { get; set; }
+        public Int32 PatchVersionId { get; set; }
+        public virtual PatchVersion PatchVersion { get; set; }
+
     }
 }

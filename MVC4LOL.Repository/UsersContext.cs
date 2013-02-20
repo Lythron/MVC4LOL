@@ -20,6 +20,7 @@ namespace MVC4LOL.Repository
         public DbSet<Champion> Champions { get; set; }
         public DbSet<Skill> Skills { get; set; }
         public DbSet<Tag> Tags { get; set; }
+        public DbSet<PatchVersion> PatchVersions { get; set; }
 
         protected override void OnModelCreating(System.Data.Entity.DbModelBuilder modelBuilder)
         {

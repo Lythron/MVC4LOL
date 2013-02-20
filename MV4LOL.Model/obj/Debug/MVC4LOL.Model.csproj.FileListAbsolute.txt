@@ -1,6 +1,6 @@
+C:\Projects\Education\MVC4LOL\MV4LOL.Model\bin\Debug\MVC4LOL.Model.dll.config
+C:\Projects\Education\MVC4LOL\MV4LOL.Model\bin\Debug\MVC4LOL.Model.dll
+C:\Projects\Education\MVC4LOL\MV4LOL.Model\bin\Debug\MVC4LOL.Model.pdb
+C:\Projects\Education\MVC4LOL\MV4LOL.Model\obj\Debug\MVC4LOL.Model.dll
+C:\Projects\Education\MVC4LOL\MV4LOL.Model\obj\Debug\MVC4LOL.Model.pdb
 C:\Projects\Education\MVC4LOL\MV4LOL.Model\obj\Debug\MVC4LOL.Model.csprojResolveAssemblyReference.cache
-C:\Projects\Education\MVC4LOL\MV4LOL.Model\bin\Debug\MV4LOL.Model.dll.config
-C:\Projects\Education\MVC4LOL\MV4LOL.Model\bin\Debug\MV4LOL.Model.dll
-C:\Projects\Education\MVC4LOL\MV4LOL.Model\bin\Debug\MV4LOL.Model.pdb
-C:\Projects\Education\MVC4LOL\MV4LOL.Model\obj\Debug\MV4LOL.Model.dll
-C:\Projects\Education\MVC4LOL\MV4LOL.Model\obj\Debug\MV4LOL.Model.pdb

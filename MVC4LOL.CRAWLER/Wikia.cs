@@ -120,6 +120,9 @@ namespace MVC4LOL.CRAWLER
 
             ChampionData champion = new ChampionData();
 
+            champion.PatchVersionId = 2; // HARDCODE;
+
+
             HtmlNode upperTable = doc.DocumentNode.SelectSingleNode("//table[@id='champion_info-upper']");
 
             try
@@ -137,6 +140,25 @@ namespace MVC4LOL.CRAWLER
             {
                 champion.Name = upperTable.SelectSingleNode("tr/td/span").InnerText;
                 champion.Title = upperTable.SelectSingleNode("tr/td/span/following-sibling::span").InnerText;
+
+                using (UsersContext us = new UsersContext())
+                {
+                    Champion champ = us.Champions.FirstOrDefault(o => o.Name == champion.Name);
+                    if (champ != null)
+                    {
+                        champion.ChampionId = champ.Id;
+                    }
+                    else
+                    { 
+                        Champion ch = new Champion();
+                        ch.Name = champion.Name;
+                        us.Champions.Add(ch);
+                        us.SaveChanges();
+                        champion.ChampionId = ch.Id;
+                    }
+                    
+                }
+
             }
             catch
             {
@@ -167,8 +189,7 @@ namespace MVC4LOL.CRAWLER
             {
             }
 
-            //champion.Tags = new List<MVC4LOL.Model.Tag>();
-            champion.Skills = new List<Skill>();
+            //champion.Skills = new List<Skill>();
 
             HtmlNode tableStatistic = doc.DocumentNode.SelectSingleNode("//table[tr/th/span[span = 'Statistics']]");
 

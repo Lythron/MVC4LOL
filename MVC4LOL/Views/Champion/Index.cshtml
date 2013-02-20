@@ -4,14 +4,18 @@
     ViewBag.Title = "Champions2";
 }
 
-<h2>Champions2</h2>
+<h2></h2>
 
-<ul>
+@foreach (var patch in Model.Patches)
+{
+    <div>@Html.RadioButton("Radio" + @patch.Name, patch) @patch.Name</div>
+}
+
 @foreach (var item in Model.Tags)
 { 
-    <li>@Html.CheckBox("Check"+@item.ToString())  @item</li>
+    <div>@Html.CheckBox("Check"+@item.ToString())  @item</div>
 }
-</ul>
+
 <fieldset>
     <legend>ChampionsViewModel</legend>
 </fieldset>

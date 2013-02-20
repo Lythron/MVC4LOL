@@ -1,29 +1,29 @@
-﻿@model IEnumerable<MVC4LOL.Model.Tag>
+﻿@model MVC4LOL.Models.ViewModels.TagsViewModel
 
 @{
     ViewBag.Title = "Tags";
 }
 
-<h2>Tags</h2>
+<h2>@Model.Champion.Name Tags</h2>
 
 <p>
-    @Html.ActionLink("Add Tag", "CreateTag", "Champion", new { Model.First().ChampionId }, null) 
+    @Html.ActionLink("Add Tag", "CreateTag", "Champion", new { championId = Model.Champion.Id}, null) 
 </p>
 <table>
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.Tags.First().Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.UserId)
+            @Html.DisplayNameFor(model => model.Tags.First().UserId)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ChampionId)
+            @Html.DisplayNameFor(model => model.Tags.First().ChampionId)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model.Tags) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
@@ -40,6 +40,6 @@
         </td>
     </tr>
 }
-@Html.ActionLink("Back", "Details2", "Champion", new { Model.First().ChampionId}, null)
+@Html.ActionLink("Back", "Details2", "Champion", new { championId = Model.Champion.Id}, null)
 
 </table>

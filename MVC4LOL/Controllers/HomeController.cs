@@ -38,18 +38,6 @@ namespace MVC4LOL.Controllers
             return View();
         }
 
-        //[Authorize(Roles="Admin")]
-        // TODO : MOve to Crawler controller
-        public ActionResult Crawlers()
-        {
-            //TODO: 
-            Wikia.HarvestData();
-
-            return View();
-
-            //return View("About");
-        }
-
         // Only for Expando example
         public ActionResult Champions()
         {

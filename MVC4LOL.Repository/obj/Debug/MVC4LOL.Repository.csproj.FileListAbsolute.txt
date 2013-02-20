@@ -3,8 +3,8 @@ C:\Projects\Education\MVC4LOL\MVC4LOL.Repository\bin\Debug\MVC4LOL.Repository.pd
 C:\Projects\Education\MVC4LOL\MVC4LOL.Repository\obj\Debug\MVC4LOL.Repository.csprojResolveAssemblyReference.cache
 C:\Projects\Education\MVC4LOL\MVC4LOL.Repository\obj\Debug\MVC4LOL.Repository.dll
 C:\Projects\Education\MVC4LOL\MVC4LOL.Repository\obj\Debug\MVC4LOL.Repository.pdb
-C:\Projects\Education\MVC4LOL\MVC4LOL.Repository\bin\Debug\MV4LOL.Model.dll
-C:\Projects\Education\MVC4LOL\MVC4LOL.Repository\bin\Debug\MV4LOL.Model.pdb
 C:\Projects\Education\MVC4LOL\MVC4LOL.Repository\bin\Debug\MVC4LOL.Repository.dll.config
 C:\Projects\Education\MVC4LOL\MVC4LOL.Repository\bin\Debug\EntityFramework.dll
 C:\Projects\Education\MVC4LOL\MVC4LOL.Repository\bin\Debug\EntityFramework.xml
+C:\Projects\Education\MVC4LOL\MVC4LOL.Repository\bin\Debug\MVC4LOL.Model.dll
+C:\Projects\Education\MVC4LOL\MVC4LOL.Repository\bin\Debug\MVC4LOL.Model.pdb

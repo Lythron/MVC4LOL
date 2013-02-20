@@ -7,8 +7,8 @@
     <ProjectGuid>{731D5D2A-394E-4B91-99B1-FACCD43825EC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MV4LOL.Model</RootNamespace>
-    <AssemblyName>MV4LOL.Model</AssemblyName>
+    <RootNamespace>MVC4LOL.Model</RootNamespace>
+    <AssemblyName>MVC4LOL.Model</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -42,11 +42,16 @@
   <ItemGroup>
     <Compile Include="POCO\Champion.cs" />
     <Compile Include="POCO\ChampionData.cs" />
+    <Compile Include="POCO\PatchVersion.cs" />
+    <Compile Include="POCO\Skill.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="POCO\UserProfile.cs" />
+    <Compile Include="POCO\Tag.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

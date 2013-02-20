@@ -10,5 +10,6 @@ namespace MVC4LOL.Models.ViewModels
     {
         public List<ChampionData> Champions { get; set; }
         public List<String> Tags { get; set; }
+        public List<PatchVersion> Patches { get; set; }
     }
 }

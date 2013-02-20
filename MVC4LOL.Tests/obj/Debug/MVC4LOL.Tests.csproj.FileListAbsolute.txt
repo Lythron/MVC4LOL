@@ -49,9 +49,9 @@ C:\Projects\Education\MVC4LOL\MVC4LOL.Tests\obj\Debug\MVC4LOL.Tests.pdb
 C:\Projects\Education\MVC4LOL\MVC4LOL.Tests\bin\Debug\HtmlAgilityPack.dll
 C:\Projects\Education\MVC4LOL\MVC4LOL.Tests\bin\Debug\HtmlAgilityPack.pdb
 C:\Projects\Education\MVC4LOL\MVC4LOL.Tests\bin\Debug\HtmlAgilityPack.xml
-C:\Projects\Education\MVC4LOL\MVC4LOL.Tests\bin\Debug\MV4LOL.Model.dll
-C:\Projects\Education\MVC4LOL\MVC4LOL.Tests\bin\Debug\MV4LOL.Model.pdb
 C:\Projects\Education\MVC4LOL\MVC4LOL.Tests\bin\Debug\MVC4LOL.Repository.dll
 C:\Projects\Education\MVC4LOL\MVC4LOL.Tests\bin\Debug\MVC4LOL.CRAWLER.dll
 C:\Projects\Education\MVC4LOL\MVC4LOL.Tests\bin\Debug\MVC4LOL.Repository.pdb
 C:\Projects\Education\MVC4LOL\MVC4LOL.Tests\bin\Debug\MVC4LOL.CRAWLER.pdb
+C:\Projects\Education\MVC4LOL\MVC4LOL.Tests\bin\Debug\MVC4LOL.Model.dll
+C:\Projects\Education\MVC4LOL\MVC4LOL.Tests\bin\Debug\MVC4LOL.Model.pdb

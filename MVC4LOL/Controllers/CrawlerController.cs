@@ -21,6 +21,7 @@ namespace MVC4LOL.Controllers
             return View();
         }
 
+        //[Authorize(Roles="Admin")]
         public ActionResult Wikia()
         {
             MVC4LOL.CRAWLER.Wikia.HarvestData();
