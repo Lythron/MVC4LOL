@@ -1,66 +1,83 @@
 ﻿var startup = function () {
 
     var init = function () {
-        
-        alert('startup.init(null, null)');
-        dataservice.getChampions(renderChampions);
+        dataservice.getChampions(renderStaff);
+    },
+
+    renderStaff = function (data) {
+        renderPatches(data);
+        renderTags(data);
+        renderChampions(data);
+    },
+
+    renderPatches = function (data) {
+        for (var key in data.Patches) {
+            $('#PatchTemplate').tmpl(data.Patches[key]).appendTo('#Patches');
+
+            $('input[name="Patch"]').checked = function () {
+                // call render champions here, first decouple rendering patches from champions
+            }
+        }
+    },
+
+    renderTags = function (data) {
+        for (var key in data.Tags) {
+            var tagLiteral = { Name: data.Tags[key] };
+
+            $('#ChampionTagsTemplate').tmpl(tagLiteral).appendTo('#Tags');
+        }
     },
 
     renderChampions = function (data) {
 
-        //for (var key in data.championsWithStrImg)
-        //{
-        //    var champ = data.championsWithStrImg[key];
-        //    renderChampionWithStrImg(champ);
-        //}
+        for (var key in data.Champions) {
+            // on first render check last patch
+            // filter here only patch selected and tags selected
 
-        for (var key in data.Champions)
-        {
+            // TODO : get data connecting champs with name of tag ( only ids right now )
+
+            var selectedPatchId = $('input[name="Patch"]:checked').val();
+
             var champ = data.Champions[key];
-            var name = champ.Name;
-            renderChampion(champ);
+            if (champ.PatchVersionId == selectedPatchId) {
+                renderChampion(champ);
+            }
         }
     },
 
-    //renderChampionWithStrImg = function (championData) {
-
-    //    var champ = championData.champion;
-
-    //    $("#Champions")
-    //    .append("<div>")
-    //    .append("<img src=\"data:image/png;base64," + championData.imageBase64 + "\" alt=\"TODO: champ.Name\">") // TODO: alt : Name
-    //    .append(champ.Name)
-    //    .append("</div>");
-    //}
-
     renderChampion = function (championData) {
+
+        // Working example of formating html in code
+        //var image = $('<img/>', {
+        //                            src: "data:image/png;base64," + championData.Image ,
+        //                            alt: championData.Name,
+        //                            title: championData.Name,
+        //                            height: 70
+        //                          });
         
-        //$('<div/>', {
-        //    id: someID,
-        //    className: 'foobar',
-        //    html: content
+        //var a = $('<a/>', {
+        //    href: "/Champion/Details2?ChampionId=" + championData.ChampionId,
+        //    html: image
         //});
 
         //$("#Champions").append($('<div/>', {
+        //    id: championData.Id,
+        //    height: 100,
+        //    html: a
+        //}));
+        
+        //$('#ChampionDetailsOverviewTemplate').tmpl(championData).appendTo('#' + championData.Id);
 
-        //                       }));
-
-        $("#Champions")
-        .append("<div>")
-        .append("<img src=\"data:image/png;base64," + championData.Image + "\" alt=\"TODO: champ.Name\">") // TODO: alt : Name
-        .append(championData.Name)
-        .append("</div>");
-
-        //$("#Champions").append("<div>")
-        //.append("<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==\" alt=\"Red dot\">")
-        //.append("</div>");
+        $('#ChampionDetailsOverviewTemplate').tmpl(championData).appendTo('#Champions');
     }
 
     return {
         init: init,
         renderChampions: renderChampions,
         renderChampion: renderChampion,
-        //renderChamionWithStrImg : renderChampionWithStrImg
+        renderStaff: renderStaff,
+        renderPatches: renderPatches,
+        renderTags: renderTags
     };
 
 }();

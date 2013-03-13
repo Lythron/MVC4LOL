@@ -103,7 +103,9 @@
 @foreach (var item in Model.Champions) {
     <tr>
         <td>
-            <img src="@Url.Action("GetPhoto", new { photoId = item.Id })" />
+            <a href="@Url.Action("Details2", "Champion", new {championId = item.ChampionId})">
+                <img src="@Url.Action("GetPhoto", new { photoId = item.Id })" />
+            </a>
         </td>
         <td>
             @Html.ActionLink(item.Name, "Details", "Champion", new { name = item.Name }, null)

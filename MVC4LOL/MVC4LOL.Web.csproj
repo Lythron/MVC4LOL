@@ -268,6 +268,8 @@
     <Content Include="Global.asax" />
     <None Include="Scripts\Libs\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\dataservice.js" />
+    <Content Include="Scripts\Libs\jQuery.tmpl.js" />
+    <Content Include="Scripts\Libs\jQuery.tmpl.min.js" />
     <Content Include="Scripts\Libs\jquery-1.7.1.js" />
     <Content Include="Scripts\Libs\jquery-1.7.1.min.js" />
     <None Include="Scripts\Libs\jquery.validate-vsdoc.js" />
@@ -284,6 +286,7 @@
     <Content Include="Scripts\Libs\modernizr-2.5.3.js" />
     <Content Include="Scripts\renderer.js" />
     <Content Include="Scripts\startup.js" />
+    <Content Include="Templates\ChampionTemplate.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

@@ -84,37 +84,5 @@ namespace MVC4LOL.Controllers
 
             return res.First();
         }
-
-        // TODO : REFACTOR!!!!111 DONE;
-        //public ChampionWithStringImage ConvertToBase64String(Model.ChampionData champion)
-        //{
-        //    ChampionWithStringImage outputChampion = new ChampionWithStringImage();
-        //    outputChampion.champion = champion;
-        //    outputChampion.imageBase64 = champion.Image != null ? System.Convert.ToBase64String(champion.Image) : String.Empty;
-        //    return outputChampion;
-        //}
-
-        //public ModelWithChampionsWithStringImage ConvertToModelWithStringImage(ChampionsViewModel model)
-        //{
-        //    ModelWithChampionsWithStringImage outputModel = new ModelWithChampionsWithStringImage();
-        //    outputModel.championsWithStrImg = model.Champions.Select(o => ConvertToBase64String(o)).ToList();
-        //    outputModel.patches = model.Patches;
-        //    outputModel.tags = model.Tags;
-        //    return outputModel;
-
-        //}
-
-        //public class ChampionWithStringImage 
-        //{
-        //    public Model.ChampionData champion { get; set; }
-        //    public string imageBase64 { get; set; }
-        //}
-
-        //public class ModelWithChampionsWithStringImage
-        //{
-        //    public List<ChampionWithStringImage> championsWithStrImg { get; set; }
-        //    public List<String> tags { get; set; }
-        //    public List<Model.PatchVersion> patches { get; set; }
-        //}
     }
 }

@@ -15,6 +15,48 @@
     });
 
 </script>
+<div id="Patches">
+
+</div>
+<div id="Tags">
+
+</div>
 <div id="Champions" >
     
 </div>
+<script id="PatchTemplate" type="text/x-jquery-tmpl" >
+    <label><input id="radioPatch${Id}" value="${Id}" type="radio" name="Patch" checked="checked" title="${Name}" />${Name}</label>
+</script>
+<script id="ChampionTagsTemplate" type="text/x-jquery-tmpl">
+    <label><input type="checkbox" title="${Name}" />${Name}</label> 
+</script>
+<script id="ChampionDetailsOverviewTemplate" type="text/x-jquery-tmpl">
+    <div>
+        <a href="/Champion/Details2?ChampionId=${ChampionId}">
+            <img src="data:image/png;base64, ${Image}" height="70" alt="${Name}" title="${Name} ${Title}" />
+        </a>
+        @*<b>${Name}</b>
+        ${Health}
+        ${HealthPerLvl}
+        ${HealtRegen}
+        ${HealthRegenPerLvl}
+        ${Armor}
+        ${ArmorPerLvl}
+        ${AtkSpeed}
+        ${AtkSpeedPerLvl}
+        ${Damage}
+        ${DamagePerLvl}
+        ${MagicResist}
+        ${MagicResistPerLvl}
+        ${Mana}
+        ${ManaPerLvl}
+        ${ManaRegen}
+        ${ManaRegenPerLvl}
+        ${MoveSpeed}
+        ${Name}
+        ${Range}
+        ${ReleaseDate}
+        ${IP_Cost}
+        ${RP_Cost}*@
+    </div>
+</script>
