@@ -30,9 +30,8 @@ namespace MVC4LOL.Controllers
             model.Champions = us.ChampionData.ToList();
             model.Patches = us.PatchVersions.ToList();
             var  userId = 1; // HARDCODE
-            model.Tags = us.Tags.Where(o => o.UserId == userId).Select(o => o.Name).Distinct().ToList();
+            model.Tags = us.Tags.Where(o => o.UserId == userId).ToList(); 
 
-            //var jsonResult = Json(ConvertToModelWithStringImage(model), JsonRequestBehavior.AllowGet);
             var jsonResult = Json(ChangeByteArrayToStringForModel(model), JsonRequestBehavior.AllowGet);
             jsonResult.MaxJsonLength = int.MaxValue;
             return jsonResult;

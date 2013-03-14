@@ -8,39 +8,71 @@
         renderPatches(data);
         renderTags(data);
         renderChampions(data);
+        $('input[name="Patch"]').click(function () {
+            renderChampions(data); 
+        });
+        $('input[type="checkbox"]').click(function() {
+            renderChampions(data); // TEST 
+        });
     },
 
     renderPatches = function (data) {
         for (var key in data.Patches) {
             $('#PatchTemplate').tmpl(data.Patches[key]).appendTo('#Patches');
-
-            $('input[name="Patch"]').checked = function () {
-                // call render champions here, first decouple rendering patches from champions
-            }
         }
     },
 
     renderTags = function (data) {
-        for (var key in data.Tags) {
-            var tagLiteral = { Name: data.Tags[key] };
+        
+        var tags = [];
+        $.each(data.Tags, function (ind, val) {
+            if ($.inArray(val.Name, tags) == -1) {
+                tags.push(val.Name);
+            }
+        });
 
+        for (var key in tags) {
+            var tagLiteral = { Name: tags[key] };
             $('#ChampionTagsTemplate').tmpl(tagLiteral).appendTo('#Tags');
         }
     },
 
     renderChampions = function (data) {
 
-        for (var key in data.Champions) {
-            // on first render check last patch
-            // filter here only patch selected and tags selected
+        $('#Champions').html("");
 
-            // TODO : get data connecting champs with name of tag ( only ids right now )
+        for (var key in data.Champions) {
 
             var selectedPatchId = $('input[name="Patch"]:checked').val();
+            var checkedTags = $('input[type="Checkbox"]:checked');
 
             var champ = data.Champions[key];
             if (champ.PatchVersionId == selectedPatchId) {
-                renderChampion(champ);
+
+                // Check here if champ has any of selected tags
+                //if ($.inArray(
+                //if (data.Tags.Where(o => o.ChampionId == champ.ChampionId && checkedTags.contains(o.Name)).Count > 0)
+                //{
+                //      render();
+                //}
+
+                if (checkedTags.length == 0) {
+                    renderChampion(champ);
+                }
+                else {
+                    for (var key in data.Tags) {
+                        var entry = data.Tags[key];
+                        if (entry.ChampionId == champ.ChampionId) {
+                            for (var key in checkedTags) {
+                                if (entry.Name == checkedTags[key].title) {
+                                    renderChampion(champ);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                //renderChampion(champ);
             }
         }
     },

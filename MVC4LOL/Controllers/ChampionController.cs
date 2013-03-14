@@ -36,7 +36,8 @@ namespace MVC4LOL.Controllers
                                  .ToList();
 
 
-            model.Tags = _cx.Tags.Where(o => o.UserId == userId).GroupBy(o => o.Name).Select(o => o.Key).ToList();
+            //model.Tags = _cx.Tags.Where(o => o.UserId == userId).GroupBy(o => o.Name).Select(o => o.Key).ToList();
+            model.Tags = _cx.Tags.Where(o => o.UserId == userId).ToList();
             return View(model);
         }
 
