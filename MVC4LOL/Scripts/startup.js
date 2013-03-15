@@ -9,11 +9,14 @@
         renderTags(data);
         renderChampions(data);
         $('input[name="Patch"]').click(function () {
-            renderChampions(data); 
+            //renderChampions(data); 
+            updateChampionsByPatch();
         });
         $('input[type="checkbox"]').click(function() {
-            renderChampions(data); // TEST 
+            //renderChampions(data); 
+            updateChampionsByTag(this);
         });
+        updateChampionsByPatch();
     },
 
     renderPatches = function (data) {
@@ -43,37 +46,42 @@
 
         for (var key in data.Champions) {
 
-            var selectedPatchId = $('input[name="Patch"]:checked').val();
-            var checkedTags = $('input[type="Checkbox"]:checked');
-
             var champ = data.Champions[key];
-            if (champ.PatchVersionId == selectedPatchId) {
+            renderChampion(champ);
 
-                // Check here if champ has any of selected tags
-                //if ($.inArray(
-                //if (data.Tags.Where(o => o.ChampionId == champ.ChampionId && checkedTags.contains(o.Name)).Count > 0)
-                //{
-                //      render();
-                //}
-
-                if (checkedTags.length == 0) {
-                    renderChampion(champ);
+            for (var key in data.Tags)
+            {
+                var tag = data.Tags[key];
+                if (tag.ChampionId == champ.ChampionId)
+                {
+                    //$('div[id=ChampionDiv' + champ.ChampionId + ']').addClass("Tag" + tag.Id);
+                    $('div[id=ChampionDiv' + champ.ChampionId + ']').addClass("Tag" + tag.Name.replace(" ", "")); // faster, but possible errors
                 }
-                else {
-                    for (var key in data.Tags) {
-                        var entry = data.Tags[key];
-                        if (entry.ChampionId == champ.ChampionId) {
-                            for (var key in checkedTags) {
-                                if (entry.Name == checkedTags[key].title) {
-                                    renderChampion(champ);
-                                }
-                            }
-                        }
-                    }
-                }
-
-                //renderChampion(champ);
             }
+
+            // Working exapmle of filtering champions
+            //var selectedPatchId = $('input[name="Patch"]:checked').val();
+            //var checkedTags = $('input[type="Checkbox"]:checked');
+
+            
+            //if (champ.PatchVersionId == selectedPatchId) {
+
+            //    if (checkedTags.length == 0) {
+            //        renderChampion(champ);
+            //    }
+            //    else {
+            //        for (var key in data.Tags) {
+            //            var entry = data.Tags[key];
+            //            if (entry.ChampionId == champ.ChampionId) {
+            //                for (var key in checkedTags) {
+            //                    if (entry.Name == checkedTags[key].title) {
+            //                        renderChampion(champ);
+            //                    }
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
         }
     },
 
@@ -101,6 +109,25 @@
         //$('#ChampionDetailsOverviewTemplate').tmpl(championData).appendTo('#' + championData.Id);
 
         $('#ChampionDetailsOverviewTemplate').tmpl(championData).appendTo('#Champions');
+
+    },
+
+    updateChampionsByPatch = function () {
+        var selectedPatchId = $('input[name="Patch"]:checked').val();
+
+        var divs = $("div[id^=ChampionDiv]").not(".Patch" + selectedPatchId);
+
+        $(".Patch" + selectedPatchId).show();
+        //$("div[id^=ChampionDiv][class!=Patch" + selectedPatchId + "]").hide();
+        $("div[id^=ChampionDiv]").not(".Patch" + selectedPatchId).hide();
+
+    }
+
+    updateChampionsByTag = function (tag) {
+        var allUnchecked = $('input[type="Checkbox"]:checked').length == 0; // TODO;
+
+        $(".Tag" + tag.title.replace(" ", "")).toggle();
+
     }
 
     return {
@@ -109,7 +136,10 @@
         renderChampion: renderChampion,
         renderStaff: renderStaff,
         renderPatches: renderPatches,
-        renderTags: renderTags
+        renderTags: renderTags,
+        updateChampionsByPatch: updateChampionsByPatch, 
+        updateChampionsByTag: updateChampionsByTag
+
     };
 
 }();
