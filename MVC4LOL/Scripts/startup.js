@@ -9,14 +9,37 @@
         renderTags(data);
         renderChampions(data);
         $('input[name="Patch"]').click(function () {
-            //renderChampions(data); 
             updateChampionsByPatch();
         });
         $('input[type="checkbox"]').click(function() {
-            //renderChampions(data); 
             updateChampionsByTag(this);
         });
+        $('#aViewMode').click(function () {
+            $('#Champions').toggle();
+            $('#ChampionsDetails').toggle();
+        });
+
+        $(function () {
+            $('div[id=Champions]').sortable();
+            //$('div[id=Champions]').draggable();
+            $('div[id=Champions]').disableSelection();
+            //$('table[id=ChampionDetailsTable]').sortable();
+            //$('table[id=ChampionDetailsTable]').draggable();
+            //$('table[id=ChampionDetailsTable]').disableSelection();
+
+            $('tr[id^=ChampionDetailsTr]').sortable();
+
+            //$("#check").button();
+            //$("#Tags").buttonset();
+
+        });
+
+        $(function () {
+            
+        });
+
         updateChampionsByPatch();
+        $('#ChampionsDetails').hide();
     },
 
     renderPatches = function (data) {
@@ -26,7 +49,6 @@
     },
 
     renderTags = function (data) {
-        
         var tags = [];
         $.each(data.Tags, function (ind, val) {
             if ($.inArray(val.Name, tags) == -1) {
@@ -55,33 +77,10 @@
                 if (tag.ChampionId == champ.ChampionId)
                 {
                     //$('div[id=ChampionDiv' + champ.ChampionId + ']').addClass("Tag" + tag.Id);
-                    $('div[id=ChampionDiv' + champ.ChampionId + ']').addClass("Tag" + tag.Name.replace(" ", "")); // faster, but possible errors
+                    $('div[id=ChampionDiv' + champ.ChampionId + ']').addClass("Tag" + tag.Name.toLowerCase().replace(/\s/g, '')); // faster, but possible errors
+                    $('tr[id=ChampionDetailsTr' + champ.ChampionId + ']').addClass("Tag" + tag.Name.toLowerCase().replace(/\s/g, ''));
                 }
             }
-
-            // Working exapmle of filtering champions
-            //var selectedPatchId = $('input[name="Patch"]:checked').val();
-            //var checkedTags = $('input[type="Checkbox"]:checked');
-
-            
-            //if (champ.PatchVersionId == selectedPatchId) {
-
-            //    if (checkedTags.length == 0) {
-            //        renderChampion(champ);
-            //    }
-            //    else {
-            //        for (var key in data.Tags) {
-            //            var entry = data.Tags[key];
-            //            if (entry.ChampionId == champ.ChampionId) {
-            //                for (var key in checkedTags) {
-            //                    if (entry.Name == checkedTags[key].title) {
-            //                        renderChampion(champ);
-            //                    }
-            //                }
-            //            }
-            //        }
-            //    }
-            //}
         }
     },
 
@@ -94,40 +93,57 @@
         //                            title: championData.Name,
         //                            height: 70
         //                          });
-        
         //var a = $('<a/>', {
         //    href: "/Champion/Details2?ChampionId=" + championData.ChampionId,
         //    html: image
         //});
-
         //$("#Champions").append($('<div/>', {
         //    id: championData.Id,
         //    height: 100,
         //    html: a
         //}));
-        
-        //$('#ChampionDetailsOverviewTemplate').tmpl(championData).appendTo('#' + championData.Id);
 
-        $('#ChampionDetailsOverviewTemplate').tmpl(championData).appendTo('#Champions');
+        var date = championData.ReleaseDate;
+        var milisecs = parseInt(date.replace("/Date(", "").replace(")/", ""));
+        var d = new Date(milisecs);
+        var month = d.getMonth() + 1;
+        var day = d.getDate();
+        var output = d.getFullYear() + '/' +
+            (('' + month).length < 2 ? '0' : '') + month + '/' +
+            (('' + day).length < 2 ? '0' : '') + day;
+        championData.ReleaseDate = output;
 
+        $('#ChampionOverviewTemplate').tmpl(championData).appendTo('#Champions');
+        $('#ChampionDetailsOverviewTemplate').tmpl(championData).appendTo('#ChampionDetailsTable');
     },
 
     updateChampionsByPatch = function () {
         var selectedPatchId = $('input[name="Patch"]:checked').val();
 
-        var divs = $("div[id^=ChampionDiv]").not(".Patch" + selectedPatchId);
-
         $(".Patch" + selectedPatchId).show();
-        //$("div[id^=ChampionDiv][class!=Patch" + selectedPatchId + "]").hide();
         $("div[id^=ChampionDiv]").not(".Patch" + selectedPatchId).hide();
-
+        $("tr[id^=ChampionDetailsTr]").not(".Patch" + selectedPatchId).hide();
     }
 
     updateChampionsByTag = function (tag) {
-        var allUnchecked = $('input[type="Checkbox"]:checked').length == 0; // TODO;
+        var selectedPatchId = $('input[name="Patch"]:checked').val();
+        var checkedTags = $('input[type="Checkbox"]:checked');
 
-        $(".Tag" + tag.title.replace(" ", "")).toggle();
-
+        if (checkedTags.length == 0) {
+            updateChampionsByPatch();
+        }
+        else {
+            var sb = "";
+            for ( var i = 0; i < checkedTags.length; i++) {
+                var t = checkedTags[i].title.toLowerCase().replace(/\s/g, '');
+                sb += ".Tag" + t;
+            }
+            $("div[id^=ChampionDiv]").hide();
+            $("tr[id^=ChampionDetailsTr]").hide();
+            $(".Patch" + selectedPatchId + sb).show();
+        };
+        // Tags should be union ,intersection and exclude so this approach will need to change.
+        // as first approach Im going with intersection
     }
 
     return {

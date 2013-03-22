@@ -15,49 +15,184 @@
     });
 
 </script>
+<a id="aViewMode">Change</a>
 <div id="Patches">
 
 </div>
+<div style="clear:both" ></div>
 <div id="Tags">
 
 </div>
+<div style="clear:both" ></div>
 <div id="Champions" >
     
+</div>
+<div style="clear:both" ></div>
+<div id="ChampionsDetails" >
+    <table id="ChampionDetailsTable" >
+        <tr>
+            <th>
+                pic
+            </th>
+            <th>
+                name
+            </th>
+            <th>
+                health
+            </th>
+            <th>
+                @*<label title="Healh per level">hpl</label>*@
+                hpl
+            </th>
+            <th>
+                hreg
+            </th>
+            <th>
+                hrpl
+            </th>
+            <th>
+                armor
+            </th>
+            <th>
+                apl
+            </th>
+            <th>
+                atk sp
+            </th>
+            <th>
+                aspl
+            </th>
+            <th>
+                damage
+            </th>
+            <th>
+                dpl
+            </th>
+            <th>
+                mres
+            </th>
+            <th>
+                mrpl
+            </th>
+            <th>
+                mana
+            </th>
+            <th>
+                mpl
+            </th>
+            <th>
+                mreg
+            </th>
+            <th>
+                mrpl
+            </th>
+            <th>
+                mspd
+            </th>
+            <th>
+                range
+            </th>
+            <th>
+                release
+            </th>
+            <th>
+                ip
+            </th>
+            <th>
+                rp
+            </th>
+        </tr>
+    </table>
+
 </div>
 <script id="PatchTemplate" type="text/x-jquery-tmpl" >
     <label><input id="radioPatch${Id}" value="${Id}" type="radio" name="Patch" checked="checked" title="${Name}" />${Name}</label>
 </script>
 <script id="ChampionTagsTemplate" type="text/x-jquery-tmpl">
-    <label><input type="checkbox" title="${Name}" />${Name}</label> 
+    <label style="white-space:nowrap; float:left;margin-right:15px" ><input type="checkbox" title="${Name}" />${Name}</label> 
+    @*<input type="checkbox" title="${Name}" id="check${Id}" /><label for="check${Id}">${Name}</label>*@
 </script>
+  
 
-<script id="ChampionDetailsOverviewTemplate" type="text/x-jquery-tmpl">
+<script id="ChampionOverviewTemplate" type="text/x-jquery-tmpl">
     <div style="width:74px; float:left" id="ChampionDiv${ChampionId}" class="Patch${PatchVersionId}">
         <a href="/Champion/Details2?ChampionId=${ChampionId}">
             <img src="data:image/png;base64, ${Image}" height="70" alt="${Name}" title="${Name} ${Title}" />
         </a>
-        @*<b>${Name}</b>
-        ${Health}
-        ${HealthPerLvl}
-        ${HealtRegen}
-        ${HealthRegenPerLvl}
-        ${Armor}
-        ${ArmorPerLvl}
-        ${AtkSpeed}
-        ${AtkSpeedPerLvl}
-        ${Damage}
-        ${DamagePerLvl}
-        ${MagicResist}
-        ${MagicResistPerLvl}
-        ${Mana}
-        ${ManaPerLvl}
-        ${ManaRegen}
-        ${ManaRegenPerLvl}
-        ${MoveSpeed}
-        ${Name}
-        ${Range}
-        ${ReleaseDate}
-        ${IP_Cost}
-        ${RP_Cost}*@
     </div>
+</script>
+<script id="ChampionDetailsOverviewTemplate" type="text/x-jquery-tmpl">
+    <tr id="ChampionDetailsTr${ChampionId}" class="Patch${PatchVersionId}">
+        <td>
+            <a href="/Champion/Details2?ChampionId=${ChampionId}">
+            <img src="data:image/png;base64, ${Image}" height="50" alt="${Name}" title="${Name} ${Title}" />
+        </a>
+        </td>
+        <td>
+            <b>${Name}</b>
+        </td>
+        <td>
+            ${Health}
+        </td>
+        <td>
+            ${HealthPerLvl}
+        </td>
+        <td>
+            ${HealthRegen}
+        </td>
+        <td>
+            ${HealthRegenPerLvl}
+        </td>
+        <td>
+            ${Armor}
+        </td>
+        <td>
+            ${ArmorPerLvl}
+        </td>
+        <td>
+            ${AtkSpeed}
+        </td>
+        <td>
+            ${AtkSpeedPerLvl}
+        </td>
+        <td>
+            ${Damage}
+        </td>
+        <td>
+            ${DamagePerLvl}
+        </td>
+        <td>
+            ${MagicResist}
+        </td>
+        <td>
+            ${MagicResistPerLvl}
+        </td>
+        <td>
+            ${Mana}
+        </td>
+        <td>
+            ${ManaPerLvl}
+        </td>
+        <td>
+            ${ManaRegen}
+        </td>
+        <td>
+            ${ManaRegenPerLvl}
+        </td>
+        <td>
+            ${MoveSpeed}
+        </td>
+        <td>
+            ${Range}
+        </td>
+        <td>
+            ${ReleaseDate}
+        </td>
+        <td>
+            ${IP_Cost}
+        </td>
+        <td>
+            ${RP_Cost}
+        </td>
+    </tr>
 </script>
