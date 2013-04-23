@@ -5,18 +5,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebMatrix.WebData;
 
 namespace MVC4LOL.Controllers
 {
+    [Authorize]
     public class ChampionJsonController : Controller
     {
-        public ActionResult Index()
-        { 
-            UsersContext us = new UsersContext();
-            var m = us.Champions.ToList();
+        //TEST if used.
+        //public ActionResult Index()
+        //{ 
+        //    MVC4LOLDb us = new MVC4LOLDb();
+        //    var m = us.Champions.ToList();
 
-            return Json(m, JsonRequestBehavior.AllowGet);
-        }
+        //    return Json(m, JsonRequestBehavior.AllowGet);
+        //}
 
         public ActionResult Index2()
         {
@@ -26,11 +29,10 @@ namespace MVC4LOL.Controllers
         public ActionResult IndexModel()
         {
             ChampionsViewModel model = new ChampionsViewModel();
-            UsersContext us = new UsersContext();
+            MVC4LOLDb us = new MVC4LOLDb();
             model.Champions = us.ChampionData.ToList();
             model.Patches = us.PatchVersions.ToList();
-            var  userId = 1; // HARDCODE
-            model.Tags = us.Tags.Where(o => o.UserId == userId).ToList(); 
+            model.Tags = us.Tags.Where(o => o.UserId == WebSecurity.CurrentUserId).ToList(); 
 
             var jsonResult = Json(ChangeByteArrayToStringForModel(model), JsonRequestBehavior.AllowGet);
             jsonResult.MaxJsonLength = int.MaxValue;

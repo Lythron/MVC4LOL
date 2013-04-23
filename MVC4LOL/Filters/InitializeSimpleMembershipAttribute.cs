@@ -26,11 +26,11 @@ namespace MVC4LOL.Filters
         {
             public SimpleMembershipInitializer()
             {
-                Database.SetInitializer<UsersContext>(null);
+                Database.SetInitializer<MVC4LOLDb>(null);
 
                 try
                 {
-                    using (var context = new UsersContext())
+                    using (var context = new MVC4LOLDb())
                     {
                         if (!context.Database.Exists())
                         {
@@ -39,7 +39,10 @@ namespace MVC4LOL.Filters
                         }
                     }
 
-                    WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+                    if (!WebSecurity.Initialized)
+                    {
+                        WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+                    }
                 }
                 catch (Exception ex)
                 {

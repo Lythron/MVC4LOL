@@ -5,6 +5,9 @@
 }
 
 <h2>Create Tag</h2>
+<div>
+     <img src="@Url.Action("GetPhotoLastPatch", new { photoId = Model.ChampionId})" />
+</div>
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
@@ -12,21 +15,7 @@
     <fieldset>
         <legend>EditTagsViewModel</legend>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ChampionId)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.ChampionId)
-            @Html.ValidationMessageFor(model => model.ChampionId)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UserId)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UserId)
-            @Html.ValidationMessageFor(model => model.UserId)
-        </div>
+        @Html.HiddenFor(model => model.ChampionId)
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Name)
@@ -35,7 +24,6 @@
             @Html.EditorFor(model => model.Name)
             @Html.ValidationMessageFor(model => model.Name)
         </div>
-
         <p>
             <input type="submit" value="Create" />
         </p>

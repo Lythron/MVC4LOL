@@ -141,7 +141,7 @@ namespace MVC4LOL.CRAWLER
                 champion.Name = upperTable.SelectSingleNode("tr/td/span").InnerText;
                 champion.Title = upperTable.SelectSingleNode("tr/td/span/following-sibling::span").InnerText;
 
-                using (UsersContext us = new UsersContext())
+                using (MVC4LOLDb us = new MVC4LOLDb())
                 {
                     Champion champ = us.Champions.FirstOrDefault(o => o.Name == champion.Name);
                     if (champ != null)
@@ -301,7 +301,7 @@ namespace MVC4LOL.CRAWLER
             {
             }
 
-            using (UsersContext cx = new UsersContext())
+            using (MVC4LOLDb cx = new MVC4LOLDb())
             {
                 cx.ChampionData.Add(champion);
                 cx.SaveChanges();

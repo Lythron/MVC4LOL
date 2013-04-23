@@ -19,45 +19,39 @@ namespace MVC4LOL.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
-
             return View();
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your app description page.";
-
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
 
         // Only for Expando example
-        public ActionResult Champions()
-        {
+        //public ActionResult Champions()
+        //{
             
-            var cx = new UsersContext();
+        //    var cx = new MVC4LOLDb();
 
-            var model = cx.Champions;
+        //    var model = cx.Champions;
 
-            var userId = 1; // HARDCODE!!
+        //    var userId = 1; // HARDCODE!!
 
-            //var list = cx.Attributes.Where(o => o.UserId == userId).Select(o => o.Name).Distinct().ToList();//.GroupBy(o => o.Name).Select(c => new {Naam = c.Key}).ToList();
-            var list = cx.Tags.Where(o => o.UserId == userId).GroupBy(o => o.Name)
-                                        .Select(c => new { Naam = c.Key }).ToExpandoList();
-            //var list = cx.Attributes.Where(o => o.UserId == userId).GroupBy(o => o.Name) // It ain't working!
-            //                            .Select(c => new { Naam = c.Key }).Select(o => o.ToExpando()).ToList();
+        //    //var list = cx.Attributes.Where(o => o.UserId == userId).Select(o => o.Name).Distinct().ToList();//.GroupBy(o => o.Name).Select(c => new {Naam = c.Key}).ToList();
+        //    var list = cx.Tags.Where(o => o.UserId == userId).GroupBy(o => o.Name)
+        //                                .Select(c => new { Naam = c.Key }).ToExpandoList();
+        //    //var list = cx.Attributes.Where(o => o.UserId == userId).GroupBy(o => o.Name) // It ain't working!
+        //    //                            .Select(c => new { Naam = c.Key }).Select(o => o.ToExpando()).ToList();
 
-            ViewBag.Tags = list;
+        //    ViewBag.Tags = list;
 
-            return View(model);
-        }
+        //    return View(model);
+        //}
         
     }
 }

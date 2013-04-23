@@ -63,3 +63,4 @@ C:\Projects\Education\MVC4LOL\MVC4LOL\bin\MVC4LOL.Model.pdb
 C:\Projects\Education\MVC4LOL\MVC4LOL\obj\Debug\MVC4LOL.Migrations.patchversion.resources
 C:\Projects\Education\MVC4LOL\MVC4LOL\obj\Debug\MVC4LOL.Migrations.skillz.resources
 C:\Projects\Education\MVC4LOL\MVC4LOL\obj\Debug\MVC4LOL.Migrations.patchnotes.resources
+C:\Projects\Education\MVC4LOL\MVC4LOL\obj\Debug\MVC4LOL.Migrations.contextChange.resources

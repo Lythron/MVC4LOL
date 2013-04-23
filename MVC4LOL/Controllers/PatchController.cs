@@ -9,21 +9,21 @@ namespace MVC4LOL.Controllers
 {
     public class PatchController : Controller
     {
-        private  UsersContext _uc;
+        private  MVC4LOLDb _uc;
 
         public PatchController()
         {
             if (_uc == null)
             {
-                _uc = new UsersContext();
+                _uc = new MVC4LOLDb();
             }
         }
 
-        public PatchController(UsersContext usersContext)
+        public PatchController(MVC4LOLDb dbContext)
         {
             if (_uc == null)
             {
-                _uc = usersContext;
+                _uc = dbContext;
             }
         }
 

@@ -9,14 +9,14 @@ namespace MVC4LOL.Migrations
     using System.Linq;
     using System.Web.Security;
 
-    internal sealed class Configuration : /*DbMigrationsConfiguration<MVC4LOL.Models.MVC4LOLContext>, */ DbMigrationsConfiguration<UsersContext>
+    internal sealed class Configuration : /*DbMigrationsConfiguration<MVC4LOL.Models.MVC4LOLContext>, */ DbMigrationsConfiguration<MVC4LOLDb>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(UsersContext context)
+        protected override void Seed(MVC4LOLDb context)
         {
             //  This method will be called after migrating to the latest version.
 
@@ -31,7 +31,7 @@ namespace MVC4LOL.Migrations
             //    );
             //
 
-            context.UserProfiles.AddOrUpdate(u => u.UserName, new UserProfile { UserName = "Lahatron" });
+            //context.UserProfiles.AddOrUpdate(u => u.UserName, new UserProfile { UserName = "Lahatron" });
 
             //if (!Roles.RoleExists("Admin")) // ERROR! update-database
             //{

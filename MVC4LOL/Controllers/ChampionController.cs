@@ -7,68 +7,65 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebMatrix.WebData;
 
 namespace MVC4LOL.Controllers
 {
+    [Authorize]
     public class ChampionController : Controller
     {
-        private UsersContext _cx { get; set; }
+        private MVC4LOLDb _cx { get; set; }
         public ChampionController()
         {
             if (_cx == null)
             {
-                _cx = new UsersContext();
+                _cx = new MVC4LOLDb();
             }
         }
 
-        public ActionResult Index()
-        {
-            
-            var model = new ChampionsViewModel();
-            var userId = 1; // HARDCODE;
-            model.Patches = _cx.PatchVersions.ToList();
+        // Not used anymore. TODO DELETE.
+        //public ActionResult Index()
+        //{
+        //    var model = new ChampionsViewModel();
+        //    model.Patches = _cx.PatchVersions.ToList();
 
-            //model.Champions = _cx.Champions.Select(o => ChampionData()) TODO:
+        //    Int32 latestPatchId = model.Patches.OrderByDescending(p => p.Date).First().Id;
+        //    model.Champions = _cx.ChampionData
+        //                         .Where(o => o.PatchVersionId == latestPatchId)
+        //                         .ToList();
 
-            Int32 latestPatchId = model.Patches.OrderByDescending(p => p.Date).First().Id;
-            model.Champions = _cx.ChampionData
-                                 .Where(o => o.PatchVersionId == latestPatchId)
-                                 .ToList();
-
-
-            //model.Tags = _cx.Tags.Where(o => o.UserId == userId).GroupBy(o => o.Name).Select(o => o.Key).ToList();
-            model.Tags = _cx.Tags.Where(o => o.UserId == userId).ToList();
-            return View(model);
-        }
+        //    // Test if Tags are unique
+        //    //model.Tags = _cx.Tags.Where(o => o.UserId == userId).GroupBy(o => o.Name).Select(o => o.Key).ToList();
+        //    model.Tags = _cx.Tags.Where(o => o.UserId == WebSecurity.CurrentUserId).ToList();
+        //    return View(model);
+        //}
 
         public ActionResult Details(String name)
         {
             Int32 championId = _cx.Champions.FirstOrDefault(o => o.Name.Equals(name)).Id;
-            var userId = 1;
+            
             var model = new ChampionDetailsViewModel();
 
             model.Patches = _cx.PatchVersions.ToList();
             Int32 latestPatchId = model.Patches.OrderByDescending(o => o.Date).First().Id;
-            //ViewBag.SelectedPatchId = latestPatchId;
             model.SelectedPatchId = latestPatchId;
 
-            model.Tags = _cx.Tags.Where(o => o.UserId == userId && o.ChampionId == championId).ToList();
+            model.Tags = _cx.Tags.Where(o => o.UserId == WebSecurity.CurrentUserId && o.ChampionId == championId).ToList();
             model.Champions = _cx.ChampionData.Where(o => o.ChampionId == championId).ToList();
 
-            return View(model);
+            return View("Details", model);
         }
 
+        //TODO: combine both details actions
         public ActionResult Details2(Int32 championId)
         {
-            var userId = 1;
             var model = new ChampionDetailsViewModel();
 
             model.Patches = _cx.PatchVersions.ToList();
             Int32 latestPatchId = model.Patches.OrderByDescending(o => o.Date).First().Id;
-            //ViewBag.SelectedPatchId = latestPatchId;
             model.SelectedPatchId = latestPatchId;
 
-            model.Tags = _cx.Tags.Where(o => o.UserId == userId && o.ChampionId == championId).ToList();
+            model.Tags = _cx.Tags.Where(o => o.UserId == WebSecurity.CurrentUserId && o.ChampionId == championId).ToList();
             model.Champions = _cx.ChampionData.Where(o => o.ChampionId == championId).ToList();
             
             return View("Details", model);
@@ -77,8 +74,8 @@ namespace MVC4LOL.Controllers
         public ActionResult Tags(Int32 championId)
         {
             TagsViewModel model = new TagsViewModel();
-            model.Tags = _cx.Tags.Where(o => o.ChampionId == championId).ToList();
-            model.Champion = _cx.Champions.First(o => o.Id == championId);
+            model.Tags = _cx.Tags.Where(o => o.ChampionId == championId && o.UserId == WebSecurity.CurrentUserId).ToList();
+            model.Champion = _cx.Champions.Find(championId);
             return View("Tags", model);
         }
 
@@ -87,9 +84,7 @@ namespace MVC4LOL.Controllers
         {
             var modelView = new EditTagsViewModel();
             modelView.ChampionId = championId;
-
-            //var model = _cx.Attributes.Where(o => o.ChampionId == championId);
-            return View(modelView);
+            return View("CreateTag", modelView);
         }
 
         [HttpPost]
@@ -98,8 +93,8 @@ namespace MVC4LOL.Controllers
             if (ModelState.IsValid)
             {
                 Tag tag = new Tag();
-                tag.ChampionId = model.ChampionId;
-                tag.UserId = 1;
+                tag.ChampionId = model.ChampionId; 
+                tag.UserId = WebSecurity.CurrentUserId;
                 tag.Name = model.Name;
 
                 _cx.Tags.Add(tag);
@@ -126,5 +121,11 @@ namespace MVC4LOL.Controllers
             return photo != null ? File(photo, "image/jpeg") : (ActionResult)(null);
         }
 
+        public ActionResult GetPhotoLastPatch(int photoId)
+        {
+            Int32 latestPatchId = _cx.PatchVersions.OrderByDescending(o => o.Date).First().Id; 
+            byte[] photo = _cx.ChampionData.First(c => c.ChampionId == photoId && c.PatchVersionId == latestPatchId).Image;
+            return photo != null ? File(photo, "image/jpeg") : (ActionResult)(null);
+        }
     }
 }
