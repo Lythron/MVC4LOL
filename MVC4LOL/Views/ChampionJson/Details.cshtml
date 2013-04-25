@@ -1,0 +1,304 @@
+﻿@model Int32
+@{
+    ViewBag.Title = "Details";
+}
+@Scripts.Render("~/bundles/leveling")
+<h2>Details</h2>
+
+<script type="text/javascript">
+    
+    $(document).ready(function () {
+        
+        details.init(822);
+        leveling.init();
+    });
+
+</script>
+<input type="button" name="buttonLvlUp" id="buttonLvlUp" value="LvlUp" />
+<input type="button" name="buttonLvlDown" id="buttonLvlDown" value="LvlDown" />
+<label id="labelLvl" >1</label>
+<div id="divDetails">
+    
+</div>
+
+<script id="DetailsTemplate" type="text/x-jquery-tmpl" >
+    <img src="data:image/png;base64, ${Champions[0].Image}" height="70" alt="${Champions[0].Name}" title="${Champions[0].Name} ${Champions[0].Title}" />
+    <table>
+        <tr>
+            <td>
+                <div class="display-label">
+                     Name
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label id="labelName">${Champions[0].Name}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                     Title
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label id="labelTitle">${Champions[0].Title}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                     Release date
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label id="labelReleaseDate" > ${Champions[0].ReleaseDate}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                     IP Cost
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label id="labelIP_Cost" >${Champions[0].IP_Cost}</label> 
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                     RP Cost
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label id="labelRP_Cost">${Champions[0].RP_Cost}</label> 
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                     Health
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label id="labelHealth" >${Champions[0].Health}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                     Health per level
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label id="labelHealthPerLvl" >${Champions[0].HealthPerLvl}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                     Health regen
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label id="labelHealthRegen" >${Champions[0].HealthRegen}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                     Health regen per level
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label id="labelHealthRegenPerLvl" >${Champions[0].HealthRegenPerLvl}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                    Mana
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label id="labelMana" >${Champions[0].Mana}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                    Mana per level
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label id="labelManaPerLvl" >${Champions[0].ManaPerLvl}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                    Mana regen
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label id="labelManaRegen" >${Champions[0].ManaRegen}</label>
+                </div>
+            </td>
+        </tr>
+         <tr>
+            <td>
+                <div class="display-label">
+                    Mana regen per level
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label id="labelManaRegenPerLvl" >${Champions[0].ManaRegenPerLvl}</label>
+                </div>
+            </td>
+        </tr>
+         <tr>
+            <td>
+                <div class="display-label">
+                    Range
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label id="labelRange" >${Champions[0].Range}</label>
+                </div>
+            </td>
+        </tr>
+         <tr>
+            <td>
+                <div class="display-label">
+                    Damage
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label id="labelDamage" >${Champions[0].Damage}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                    Damage per level
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label id="labelDamagePerLvl" >${Champions[0].DamagePerLvl}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                    Attack speed
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label id="labelAtkSpeed" >${Champions[0].AtkSpeed}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                    Attack speed per level
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label id="labelAtkSpeedPerLvl" >${Champions[0].AtkSpeedPerLvl}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                    Armor
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label id="labelArmor" >${Champions[0].Armor}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                    Armor per level
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label id="labelArmorPerLvl" >${Champions[0].ArmorPerLvl}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                    Magic resist
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label id="labelMagicResist" >${Champions[0].MagicResist}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                    Magic resist per level
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label id="labelMagicResistPerLvl" >${Champions[0].MagicResistPerLvl}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                    Movement speed
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label id="labelMoveSpeed">${Champions[0].MoveSpeed}</label>
+                </div>
+            </td>
+        </tr>
+    </table>
+</script>

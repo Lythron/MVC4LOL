@@ -1,6 +1,8 @@
 ﻿select * from Champion;
-select * from ChampionData;
+select * from ChampionData; 
+
 select * from PatchVersion;
+
 
 select * from Tag where ChampionId = 826;
 

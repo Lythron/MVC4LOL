@@ -6,7 +6,14 @@
         });
     };
     
+    var getChampion = function (championId, callback) {
+        $.getJSON("/ChampionJson/DetailsJson?championId=" + championId, function (data) {
+            callback(data);
+        });
+    }
+
     return  {
-        getChampions: getChampions
+        getChampions: getChampions,
+        getChampion : getChampion
     }
 }();

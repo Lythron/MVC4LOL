@@ -1,4 +1,4 @@
-﻿@model MVC4LOL.Models.ViewModels.ChampionsViewModel
+﻿@*  @model MVC4LOL.Models.ViewModels.ChampionsViewModel
 
 @{
     ViewBag.Title = "Champions2";
@@ -109,10 +109,9 @@
         </td>
         <td>
             @Html.ActionLink(item.Name, "Details", "Champion", new { name = item.Name }, null)
-            @*@Html.DisplayFor(modelItem => item.Name)*@
+            
         </td>
         <td>
-            @*@Html.DisplayFor(modelItem => item.Title)*@
             @Html.ActionLink(item.Title, "Details2", "Champion", new {championId = item.ChampionId}, null)
         </td>
         <td>
@@ -185,7 +184,7 @@
 
             @Html.ActionLink("Details2", "Details2", new { id = item.Id})
         </td>
-    </tr>
+   </tr>
 }
 
-</table>
+</table>*@

@@ -54,5 +54,13 @@ namespace MVC4LOL.Repository
         {
             SaveChanges();
         }
+
+        protected override void OnModelCreating(System.Data.Entity.DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<ChampionData>().Property(o => o.AtkSpeed).HasPrecision(8, 3);
+
+            base.OnModelCreating(modelBuilder);
+        }
+
     }
 }

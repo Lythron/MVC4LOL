@@ -204,6 +204,10 @@
     <Compile Include="Migrations\201304221013007_contextChange.Designer.cs">
       <DependentUpon>201304221013007_contextChange.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201304240904313_AttSpeed.cs" />
+    <Compile Include="Migrations\201304240904313_AttSpeed.Designer.cs">
+      <DependentUpon>201304240904313_AttSpeed.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Champion.cs" />
@@ -281,6 +285,7 @@
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\dataservice.js" />
+    <Content Include="Scripts\details.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
@@ -297,6 +302,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
+    <Content Include="Scripts\leveling.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
     <Content Include="Scripts\renderer.js" />
     <Content Include="Scripts\startup.js" />
@@ -351,6 +357,7 @@
     <Content Include="Views\Champion\Tags.cshtml" />
     <Content Include="Views\Patch\Index.cshtml" />
     <Content Include="Views\ChampionJson\Index2.cshtml" />
+    <Content Include="Views\ChampionJson\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -394,6 +401,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201304221013007_contextChange.resx">
       <DependentUpon>201304221013007_contextChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201304240904313_AttSpeed.resx">
+      <DependentUpon>201304240904313_AttSpeed.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

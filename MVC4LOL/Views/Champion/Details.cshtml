@@ -4,7 +4,18 @@
     ViewBag.Title = "Details";
 }
 
+@Scripts.Render("~/bundles/leveling")
 <h2>Details</h2>
+
+<script type="text/javascript">
+    
+    $(document).ready(function () {
+        
+        leveling.init();
+        
+    });
+
+</script>
 
 <fieldset>
     <legend>Champion</legend>
@@ -34,7 +45,9 @@
     <div>
         <img src="@Url.Action("GetPhoto", new { photoId = Model.Champions.First(o => o.PatchVersionId == Model.SelectedPatchId).Id })" />
     </div>
-
+    <input type="button" name="buttonLvlUp" id="buttonLvlUp" value="LvlUp" />
+    <input type="button" name="buttonLvlDown" id="buttonLvlDown" value="LvlDown" />
+    <label id="labelLvl" >1</label>
 
     <table>
         <tr>
