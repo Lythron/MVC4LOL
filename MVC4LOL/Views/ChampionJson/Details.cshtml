@@ -14,6 +14,11 @@
     });
 
 </script>
+<div id="Patches">
+</div>
+<div id="Champions">
+</div>
+
 <input type="button" name="buttonLvlUp" id="buttonLvlUp" value="LvlUp" />
 <input type="button" name="buttonLvlDown" id="buttonLvlDown" value="LvlDown" />
 <label id="labelLvl" >1</label>
@@ -297,6 +302,290 @@
             <td>
                 <div class="display-field">
                     <label id="labelMoveSpeed">${Champions[0].MoveSpeed}</label>
+                </div>
+            </td>
+        </tr>
+    </table>
+</script>
+<script id="PatchTemplate" type="text/x-jquery-tmpl" >
+    <label><input id="radioPatch${Id}" value="${Id}" type="radio" name="Patch" checked="checked" title="${Name}" />${Name}</label>
+</script>
+<script id="ChampionTemplate" type="text/x-jquery-tmpl" >
+    <img src="data:image/png;base64, ${Image}" height="70" alt="${Name}" title="${Name} ${Title}" />
+    <table>
+        <tr>
+            <td>
+                <div class="display-label">
+                     Name
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label >${Name}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                     Title
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label x>${Title}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                     Release date
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label  > ${ReleaseDate}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                     IP Cost
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label  >${IP_Cost}</label> 
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                     RP Cost
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label >${RP_Cost}</label> 
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                     Health
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label  >${Health}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                     Health per level
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label  >${HealthPerLvl}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                     Health regen
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label  >${HealthRegen}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                     Health regen per level
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label  >${HealthRegenPerLvl}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                    Mana
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label  >${Mana}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                    Mana per level
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label  >${ManaPerLvl}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                    Mana regen
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label  >${ManaRegen}</label>
+                </div>
+            </td>
+        </tr>
+         <tr>
+            <td>
+                <div class="display-label">
+                    Mana regen per level
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label  >${ManaRegenPerLvl}</label>
+                </div>
+            </td>
+        </tr>
+         <tr>
+            <td>
+                <div class="display-label">
+                    Range
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label  >${Range}</label>
+                </div>
+            </td>
+        </tr>
+         <tr>
+            <td>
+                <div class="display-label">
+                    Damage
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label  >${Damage}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                    Damage per level
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label  >${DamagePerLvl}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                    Attack speed
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label  >${AtkSpeed}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                    Attack speed per level
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label  >${AtkSpeedPerLvl}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                    Armor
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label  >${Armor}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                    Armor per level
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label  >${ArmorPerLvl}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                    Magic resist
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label  >${MagicResist}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                    Magic resist per level
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label  >${MagicResistPerLvl}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                    Movement speed
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label >${MoveSpeed}</label>
                 </div>
             </td>
         </tr>
