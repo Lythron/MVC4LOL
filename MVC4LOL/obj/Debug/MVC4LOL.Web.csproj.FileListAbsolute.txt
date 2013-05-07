@@ -65,3 +65,9 @@ C:\Projects\Education\MVC4LOL\MVC4LOL\obj\Debug\MVC4LOL.Migrations.skillz.resour
 C:\Projects\Education\MVC4LOL\MVC4LOL\obj\Debug\MVC4LOL.Migrations.patchnotes.resources
 C:\Projects\Education\MVC4LOL\MVC4LOL\obj\Debug\MVC4LOL.Migrations.contextChange.resources
 C:\Projects\Education\MVC4LOL\MVC4LOL\obj\Debug\MVC4LOL.Migrations.AttSpeed.resources
+C:\Projects\Education\MVC4LOL\MVC4LOL\obj\Debug\MVC4LOL.Migrations.builds.resources
+C:\Projects\Education\MVC4LOL\MVC4LOL\obj\Debug\MVC4LOL.Migrations.renameTables.resources
+C:\Projects\Education\MVC4LOL\MVC4LOL\obj\Debug\MVC4LOL.Migrations.itemImage.resources
+C:\Projects\Education\MVC4LOL\MVC4LOL\obj\Debug\MVC4LOL.Migrations.itemName.resources
+C:\Projects\Education\MVC4LOL\MVC4LOL\obj\Debug\MVC4LOL.Migrations.itemAvailability.resources
+C:\Projects\Education\MVC4LOL\MVC4LOL\obj\Debug\MVC4LOL.Migrations.itemCost.resources

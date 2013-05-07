@@ -29,6 +29,8 @@ namespace MVC4LOL.Model
         public Int32 IP_Cost { get; set; }
         public Int32 RP_Cost { get; set; }
         
+
+        // TODO : move to base stats, rename Atk to Attack
         public Decimal Health { get; set; }
         public Decimal HealthPerLvl { get; set; }
         public Decimal HealthRegen { get; set; }

@@ -1,8 +1,14 @@
 ﻿select * from Champion;
 select * from ChampionData; 
 
-select * from PatchVersion;
+select * From skill;
 
+select * from PatchVersion;
+select * from item;
+
+select health, damage, AttackSpeed,  name from item where health > 0 or damage > 0 or AttackSpeed > 0;
+
+-- delete from item;
 
 select * from Tag where ChampionId = 826;
 

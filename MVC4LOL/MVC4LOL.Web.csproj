@@ -170,6 +170,7 @@
     <Compile Include="Controllers\ChampionJsonController.cs" />
     <Compile Include="Controllers\CrawlerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\PatchController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -207,6 +208,30 @@
     <Compile Include="Migrations\201304240904313_AttSpeed.cs" />
     <Compile Include="Migrations\201304240904313_AttSpeed.Designer.cs">
       <DependentUpon>201304240904313_AttSpeed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305061133290_builds.cs" />
+    <Compile Include="Migrations\201305061133290_builds.Designer.cs">
+      <DependentUpon>201305061133290_builds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305061159088_renameTables.cs" />
+    <Compile Include="Migrations\201305061159088_renameTables.Designer.cs">
+      <DependentUpon>201305061159088_renameTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305061250119_itemImage.cs" />
+    <Compile Include="Migrations\201305061250119_itemImage.Designer.cs">
+      <DependentUpon>201305061250119_itemImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305070843305_itemName.cs" />
+    <Compile Include="Migrations\201305070843305_itemName.Designer.cs">
+      <DependentUpon>201305070843305_itemName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305070923279_itemAvailability.cs" />
+    <Compile Include="Migrations\201305070923279_itemAvailability.Designer.cs">
+      <DependentUpon>201305070923279_itemAvailability.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305071248472_itemCost.cs" />
+    <Compile Include="Migrations\201305071248472_itemCost.Designer.cs">
+      <DependentUpon>201305071248472_itemCost.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -358,6 +383,7 @@
     <Content Include="Views\Patch\Index.cshtml" />
     <Content Include="Views\ChampionJson\Index2.cshtml" />
     <Content Include="Views\ChampionJson\Details.cshtml" />
+    <Content Include="Views\Item\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -404,6 +430,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201304240904313_AttSpeed.resx">
       <DependentUpon>201304240904313_AttSpeed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305061133290_builds.resx">
+      <DependentUpon>201305061133290_builds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305061159088_renameTables.resx">
+      <DependentUpon>201305061159088_renameTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305061250119_itemImage.resx">
+      <DependentUpon>201305061250119_itemImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305070843305_itemName.resx">
+      <DependentUpon>201305070843305_itemName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305070923279_itemAvailability.resx">
+      <DependentUpon>201305070923279_itemAvailability.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305071248472_itemCost.resx">
+      <DependentUpon>201305071248472_itemCost.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

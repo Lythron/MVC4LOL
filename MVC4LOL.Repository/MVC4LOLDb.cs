@@ -30,6 +30,14 @@ namespace MVC4LOL.Repository
         public DbSet<Tag> Tags { get; set; }
         public DbSet<PatchVersion> PatchVersions { get; set; }
 
+        public DbSet<Item> Items { get; set; }
+        public DbSet<Build> Builds { get; set; }
+        public DbSet<BuildItem> BuildItems { get; set; }
+        public DbSet<RunePage> RunePages { get; set; }
+        public DbSet<Rune> Runes { get; set; }
+        public DbSet<RuneType> RuneTypes { get; set; }
+        public DbSet<RuneForRunePage> RunesForRunePages { get; set; }
+
         IQueryable<T> IMVC4LOLDb.Query<T>()
         {
             return Set<T>();

@@ -48,6 +48,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers.cs" />
+    <Compile Include="ItemsWikia.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Wikia.cs" />
   </ItemGroup>

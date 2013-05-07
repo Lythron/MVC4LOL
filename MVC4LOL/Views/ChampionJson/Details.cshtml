@@ -16,17 +16,17 @@
 </script>
 <div id="Patches">
 </div>
-<div id="Champions">
-</div>
-
 <input type="button" name="buttonLvlUp" id="buttonLvlUp" value="LvlUp" />
 <input type="button" name="buttonLvlDown" id="buttonLvlDown" value="LvlDown" />
 <label id="labelLvl" >1</label>
+
+<div id="Champions">
+</div>
 <div id="divDetails">
     
 </div>
 
-<script id="DetailsTemplate" type="text/x-jquery-tmpl" >
+@*<script id="DetailsTemplate" type="text/x-jquery-tmpl" >
     <img src="data:image/png;base64, ${Champions[0].Image}" height="70" alt="${Champions[0].Name}" title="${Champions[0].Name} ${Champions[0].Title}" />
     <table>
         <tr>
@@ -306,11 +306,12 @@
             </td>
         </tr>
     </table>
-</script>
+</script>*@
 <script id="PatchTemplate" type="text/x-jquery-tmpl" >
     <label><input id="radioPatch${Id}" value="${Id}" type="radio" name="Patch" checked="checked" title="${Name}" />${Name}</label>
 </script>
 <script id="ChampionTemplate" type="text/x-jquery-tmpl" >
+    <div class="Patch${PatchVersionId}">
     <img src="data:image/png;base64, ${Image}" height="70" alt="${Name}" title="${Name} ${Title}" />
     <table>
         <tr>
@@ -333,7 +334,7 @@
             </td>
             <td>
                 <div class="display-field">
-                    <label x>${Title}</label>
+                    <label >${Title}</label>
                 </div>
             </td>
         </tr>
@@ -381,7 +382,7 @@
             </td>
             <td>
                 <div class="display-field">
-                    <label  >${Health}</label>
+                    <label id="labelHealth"  >${Health}</label>
                 </div>
             </td>
         </tr>
@@ -590,4 +591,5 @@
             </td>
         </tr>
     </table>
+</div>
 </script>

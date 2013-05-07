@@ -14,18 +14,24 @@ using MVC4LOL.Models.ViewModels;
 
 namespace MVC4LOL.Controllers
 {
+    //[Authorize(Roles="Admin")]
     public class CrawlerController : Controller
     {
         public ActionResult Index()
         {
             return View();
         }
-
-        //[Authorize(Roles="Admin")]
+        
         public ActionResult Wikia()
         {
             MVC4LOL.CRAWLER.Wikia.HarvestData();
             return View();
+        }
+
+        public ActionResult ItemsWikia()
+        {
+            MVC4LOL.CRAWLER.ItemsWikia.HarvestData();
+            return Content("DONE!!"); 
         }
 
     }
