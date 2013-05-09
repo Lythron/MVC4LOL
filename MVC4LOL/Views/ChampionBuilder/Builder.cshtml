@@ -1,0 +1,352 @@
+﻿@model MVC4LOL.Models.ViewModels.ChampionBuilderViewModel
+
+@{
+    ViewBag.Title = "Builder";
+}
+<h2>Builder</h2>
+
+@Scripts.Render("~/bundles/builder")
+<script type="text/javascript">
+    
+    $(document).ready(function () {
+        
+        detailsBuilder.init(800); // HARDCODE
+        //levelingBuilder.init();
+    });
+
+</script>
+
+<input type="button" name="buttonLvlUp" id="buttonLvlUp" value="LvlUp" />
+<input type="button" name="buttonLvlDown" id="buttonLvlDown" value="LvlDown" />
+<label id="labelLvl" >1</label>
+
+@*<table>
+    <tr>
+        <td>
+            <div class="display-label">
+                @Html.DisplayNameFor(model => model.Champion.Name)
+            </div>
+        </td>
+        <td>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.Champion.Name)
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="display-label">
+                @Html.DisplayNameFor(model => model.Champion.Health)
+            </div>
+        </td>
+        <td>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.Champion.Health)
+            </div>
+        </td>
+    </tr>
+</table>
+<select>
+    @foreach (var i in Model.Items)
+    { 
+        <option >@i.Name</option>
+    }
+</select>*@
+Currently carried items:
+</br>
+@for (var i = 1; i<=6; i++)
+{
+<div id="divItem@(i)" style="width:60px;height:60px;border:1px solid red;float:left">
+
+</div>
+}
+<div style="clear:both" ></div>
+<div id="Champion">
+</div>
+<div id="Items">
+</div>
+
+<script id="ItemTemplate" type="text/x-jquery-tmpl" >
+    <img id="itemImage${Id}" src="data:image/png;base64, ${Image}" height="60" alt="${Name}" title="${Name} ${Title}" />
+</script>
+<script id="ChampionTemplate" type="text/x-jquery-tmpl" >
+    <img src="data:image/png;base64, ${Image}" height="70" alt="${Name}" title="${Name} ${Title}" />
+    <table>
+        <tr>
+            <td>
+                <div class="display-label">
+                     Name
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label >${Name}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                     Title
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label >${Title}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                     Release date
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label  > ${ReleaseDate}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                     IP Cost
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label  >${IP_Cost}</label> 
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                     RP Cost
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label >${RP_Cost}</label> 
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                     Health
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label id="labelHealth"  >${Health}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                     Health per level
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label  >${HealthPerLvl}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                     Health regen
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label  >${HealthRegen}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                     Health regen per level
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label  >${HealthRegenPerLvl}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                    Mana
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label  >${Mana}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                    Mana per level
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label  >${ManaPerLvl}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                    Mana regen
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label  >${ManaRegen}</label>
+                </div>
+            </td>
+        </tr>
+         <tr>
+            <td>
+                <div class="display-label">
+                    Mana regen per level
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label  >${ManaRegenPerLvl}</label>
+                </div>
+            </td>
+        </tr>
+         <tr>
+            <td>
+                <div class="display-label">
+                    Range
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label  >${Range}</label>
+                </div>
+            </td>
+        </tr>
+         <tr>
+            <td>
+                <div class="display-label">
+                    Damage
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label  >${Damage}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                    Damage per level
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label  >${DamagePerLvl}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                    Attack speed
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label  >${AtkSpeed}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                    Attack speed per level
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label  >${AtkSpeedPerLvl}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                    Armor
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label  >${Armor}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                    Armor per level
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label  >${ArmorPerLvl}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                    Magic resist
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label  >${MagicResist}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                    Magic resist per level
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label  >${MagicResistPerLvl}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                    Movement speed
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label >${MoveSpeed}</label>
+                </div>
+            </td>
+        </tr>
+    </table>
+</script>

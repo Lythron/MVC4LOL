@@ -93,6 +93,15 @@ namespace MVC4LOL.CRAWLER
             try
             {
                 String stats = infoDiv.SelectSingleNode("descendant::tr/th[contains(.,'Stats')]/following-sibling::td").InnerText.Trim();
+                if (stats.Contains("health regeneration"))
+                {
+                    Regex regHealthRegen = new Regex("([\\d]+)[\\s]*health regeneration");
+                    String h = regHealthRegen.Match(stats).Groups[1].Value;
+
+                    stats = stats.Replace(regHealthRegen.Match(stats).Groups[0].Value, String.Empty);
+                    item.Health = Decimal.Parse(h);
+                }
+
                 if (stats.Contains("health"))
                 {
                     Regex regHealth = new Regex("([\\d]+)[\\s]*health");
@@ -101,7 +110,7 @@ namespace MVC4LOL.CRAWLER
                 }
             }
             catch
-            { 
+            {
             }
 
             try
@@ -123,8 +132,8 @@ namespace MVC4LOL.CRAWLER
                 String stats = infoDiv.SelectSingleNode("descendant::tr/th[contains(.,'Stats')]/following-sibling::td").InnerText.Trim();
                 if (stats.Contains("attack speed"))
                 {
-                    Regex regDamage = new Regex("([\\d]+)%?[\\s]*attack speed");
-                    String h = regDamage.Match(stats).Groups[1].Value;
+                    Regex regAttackSpeed = new Regex("([\\d]+)%?[\\s]*attack speed");
+                    String h = regAttackSpeed.Match(stats).Groups[1].Value;
                     item.AttackSpeed = Decimal.Parse(h)/100;
                 }
             }
@@ -135,10 +144,17 @@ namespace MVC4LOL.CRAWLER
             try
             {
                 String stats = infoDiv.SelectSingleNode("descendant::tr/th[contains(.,'Stats')]/following-sibling::td").InnerText.Trim();
+                if (stats.Contains("mana regen"))
+                {
+                    Regex regManaRegen = new Regex("([\\d]+)%?[\\s]*mana regen");
+                    String h = regManaRegen.Match(stats).Groups[1].Value;
+                    stats = stats.Replace(regManaRegen.Match(stats).Groups[0].Value, String.Empty);
+                    item.ManaRegen = Decimal.Parse(h);
+                }
                 if (stats.Contains("mana"))
                 {
-                    Regex regDamage = new Regex("([\\d]+)%?[\\s]*mana");
-                    String h = regDamage.Match(stats).Groups[1].Value;
+                    Regex regMana = new Regex("([\\d]+)%?[\\s]*mana");
+                    String h = regMana.Match(stats).Groups[1].Value;
                     item.Mana = Decimal.Parse(h);
                 }
             }

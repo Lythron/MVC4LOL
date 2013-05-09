@@ -4,9 +4,9 @@ select * from ChampionData;
 select * From skill;
 
 select * from PatchVersion;
-select * from item;
+select * from item where Mana > 0 or ManaRegen > 0;
 
-select health, damage, AttackSpeed,  name from item where health > 0 or damage > 0 or AttackSpeed > 0;
+select health, damage, AttackSpeed, mana,  name from item where health > 0 or damage > 0 or AttackSpeed > 0;
 
 -- delete from item;
 

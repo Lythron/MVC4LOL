@@ -2,11 +2,11 @@
 var leveling = function () {
     var init = function (data) {
         _data = data;
-        $('input[name="buttonLvlUp"]').unbind('click');
+        //$('input[name="buttonLvlUp"]').unbind('click');
         $('input[name="buttonLvlUp"]').click(function () {
             increaseLvl();
         });
-        $('input[name="buttonLvlDown"]').unbind('click');
+        //$('input[name="buttonLvlDown"]').unbind('click');
         $('input[name="buttonLvlDown"]').click(function () {
             decreaseLvl();
         });

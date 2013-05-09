@@ -12,8 +12,15 @@
         });
     }
 
+    var loadBuilder = function (championId, callback) {
+        $.getJSON("/ChampionBuilder/Load?championId=" + championId, function (data) {
+            callback(data);
+        });
+    }
+
     return  {
         getChampions: getChampions,
-        getChampion : getChampion
+        getChampion: getChampion,
+        loadBuilder: loadBuilder
     }
 }();

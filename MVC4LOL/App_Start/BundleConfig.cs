@@ -9,27 +9,31 @@ namespace MVC4LOL
         public static void RegisterBundles(BundleCollection bundles)
         {
 
+            bundles.Add(new ScriptBundle("~/bundles/builder").Include(
+                        "~/Scripts/detailsBuilder.js",
+                        "~/Scripts/levelingBuilder.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/leveling").Include(
                         "~/Scripts/leveling.js",
                         "~/Scripts/details.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/Libs/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
-                        "~/Scripts/jquery-ui-{version}.js"));
+                        "~/Scripts/Libs/jquery-ui-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jquerytmpl").Include(
-                        "~/Scripts/jQuery.tmpl.js"));
+                        "~/Scripts/Libs/jQuery.tmpl.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                        "~/Scripts/jquery.unobtrusive*",
-                        "~/Scripts/jquery.validate*"));
+                        "~/Scripts/Libs/jquery.unobtrusive*",
+                        "~/Scripts/Libs/jquery.validate*"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                        "~/Scripts/modernizr-*"));
+                        "~/Scripts/Libs/modernizr-*"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
 
