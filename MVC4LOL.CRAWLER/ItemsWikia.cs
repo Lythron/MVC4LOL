@@ -134,7 +134,7 @@ namespace MVC4LOL.CRAWLER
                 {
                     Regex regAttackSpeed = new Regex("([\\d]+)%?[\\s]*attack speed");
                     String h = regAttackSpeed.Match(stats).Groups[1].Value;
-                    item.AttackSpeed = Decimal.Parse(h)/100;
+                    item.AttackSpeed = Decimal.Parse(h)/100; // ?
                 }
             }
             catch
@@ -156,6 +156,34 @@ namespace MVC4LOL.CRAWLER
                     Regex regMana = new Regex("([\\d]+)%?[\\s]*mana");
                     String h = regMana.Match(stats).Groups[1].Value;
                     item.Mana = Decimal.Parse(h);
+                }
+            }
+            catch
+            {
+            }
+
+            try
+            {
+                String stats = infoDiv.SelectSingleNode("descendant::tr/th[contains(.,'Stats')]/following-sibling::td").InnerText.Trim();
+                if (stats.Contains("armor"))
+                {
+                    Regex regArmor = new Regex("([\\d]+)%?[\\s]*armor");
+                    String h = regArmor.Match(stats).Groups[1].Value;
+                    item.Armor = Decimal.Parse(h);
+                }
+            }
+            catch
+            {
+            }
+
+            try
+            {
+                String stats = infoDiv.SelectSingleNode("descendant::tr/th[contains(.,'Stats')]/following-sibling::td").InnerText.Trim();
+                if (stats.Contains("magic resist"))
+                {
+                    Regex regMagicResist = new Regex("([\\d]+)%?[\\s]*magic resist");
+                    String h = regMagicResist.Match(stats).Groups[1].Value;
+                    item.MagicResist = Decimal.Parse(h);
                 }
             }
             catch

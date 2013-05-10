@@ -1,10 +1,12 @@
 ﻿select * from Champion;
-select * from ChampionData; 
+select * from ChampionData where ChampionId = 800; 
+
+
 
 select * From skill;
 
 select * from PatchVersion;
-select * from item where Mana > 0 or ManaRegen > 0;
+select * from item where Mana > 0 or ManaRegen > 0 or Armor > 0;
 
 select health, damage, AttackSpeed, mana,  name from item where health > 0 or damage > 0 or AttackSpeed > 0;
 

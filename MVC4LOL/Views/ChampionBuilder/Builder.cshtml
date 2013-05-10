@@ -10,8 +10,7 @@
     
     $(document).ready(function () {
         
-        detailsBuilder.init(800); // HARDCODE
-        //levelingBuilder.init();
+        detailsBuilder.init(@Model.Champion.ChampionId); 
     });
 
 </script>
@@ -20,38 +19,6 @@
 <input type="button" name="buttonLvlDown" id="buttonLvlDown" value="LvlDown" />
 <label id="labelLvl" >1</label>
 
-@*<table>
-    <tr>
-        <td>
-            <div class="display-label">
-                @Html.DisplayNameFor(model => model.Champion.Name)
-            </div>
-        </td>
-        <td>
-            <div class="display-field">
-                @Html.DisplayFor(model => model.Champion.Name)
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <div class="display-label">
-                @Html.DisplayNameFor(model => model.Champion.Health)
-            </div>
-        </td>
-        <td>
-            <div class="display-field">
-                @Html.DisplayFor(model => model.Champion.Health)
-            </div>
-        </td>
-    </tr>
-</table>
-<select>
-    @foreach (var i in Model.Items)
-    { 
-        <option >@i.Name</option>
-    }
-</select>*@
 Currently carried items:
 </br>
 @for (var i = 1; i<=6; i++)
@@ -80,11 +47,11 @@ Currently carried items:
             </td>
             <td>
                 <div class="display-field">
-                    <label >${Name}</label>
+                    <label >${Name} ${Title}</label>
                 </div>
             </td>
         </tr>
-        <tr>
+        @*<tr>
             <td>
                 <div class="display-label">
                      Title
@@ -131,7 +98,7 @@ Currently carried items:
                     <label >${RP_Cost}</label> 
                 </div>
             </td>
-        </tr>
+        </tr>*@
         <tr>
             <td>
                 <div class="display-label">
@@ -144,7 +111,7 @@ Currently carried items:
                 </div>
             </td>
         </tr>
-        <tr>
+        @*<tr>
             <td>
                 <div class="display-label">
                      Health per level
@@ -155,7 +122,7 @@ Currently carried items:
                     <label  >${HealthPerLvl}</label>
                 </div>
             </td>
-        </tr>
+        </tr>*@
         <tr>
             <td>
                 <div class="display-label">
@@ -164,11 +131,11 @@ Currently carried items:
             </td>
             <td>
                 <div class="display-field">
-                    <label  >${HealthRegen}</label>
+                    <label id="labelHealthRegen" >${HealthRegen}</label>
                 </div>
             </td>
         </tr>
-        <tr>
+        @*<tr>
             <td>
                 <div class="display-label">
                      Health regen per level
@@ -179,7 +146,7 @@ Currently carried items:
                     <label  >${HealthRegenPerLvl}</label>
                 </div>
             </td>
-        </tr>
+        </tr>*@
         <tr>
             <td>
                 <div class="display-label">
@@ -188,11 +155,11 @@ Currently carried items:
             </td>
             <td>
                 <div class="display-field">
-                    <label  >${Mana}</label>
+                    <label id="labelMana" >${Mana}</label>
                 </div>
             </td>
         </tr>
-        <tr>
+        @*<tr>
             <td>
                 <div class="display-label">
                     Mana per level
@@ -203,7 +170,7 @@ Currently carried items:
                     <label  >${ManaPerLvl}</label>
                 </div>
             </td>
-        </tr>
+        </tr>*@
         <tr>
             <td>
                 <div class="display-label">
@@ -212,11 +179,11 @@ Currently carried items:
             </td>
             <td>
                 <div class="display-field">
-                    <label  >${ManaRegen}</label>
+                    <label id="labelManaRegen" >${ManaRegen}</label>
                 </div>
             </td>
         </tr>
-         <tr>
+         @*<tr>
             <td>
                 <div class="display-label">
                     Mana regen per level
@@ -227,7 +194,7 @@ Currently carried items:
                     <label  >${ManaRegenPerLvl}</label>
                 </div>
             </td>
-        </tr>
+        </tr>*@
          <tr>
             <td>
                 <div class="display-label">
@@ -236,7 +203,7 @@ Currently carried items:
             </td>
             <td>
                 <div class="display-field">
-                    <label  >${Range}</label>
+                    <label id="labelRange" >${Range}</label>
                 </div>
             </td>
         </tr>
@@ -248,11 +215,11 @@ Currently carried items:
             </td>
             <td>
                 <div class="display-field">
-                    <label  >${Damage}</label>
+                    <label id="labelDamage" >${Damage}</label>
                 </div>
             </td>
         </tr>
-        <tr>
+        @*<tr>
             <td>
                 <div class="display-label">
                     Damage per level
@@ -263,7 +230,7 @@ Currently carried items:
                     <label  >${DamagePerLvl}</label>
                 </div>
             </td>
-        </tr>
+        </tr>*@
         <tr>
             <td>
                 <div class="display-label">
@@ -272,11 +239,11 @@ Currently carried items:
             </td>
             <td>
                 <div class="display-field">
-                    <label  >${AtkSpeed}</label>
+                    <label id="labelAttackSpeed" >${AtkSpeed}</label>
                 </div>
             </td>
         </tr>
-        <tr>
+        @*<tr>
             <td>
                 <div class="display-label">
                     Attack speed per level
@@ -287,7 +254,7 @@ Currently carried items:
                     <label  >${AtkSpeedPerLvl}</label>
                 </div>
             </td>
-        </tr>
+        </tr>*@
         <tr>
             <td>
                 <div class="display-label">
@@ -296,11 +263,11 @@ Currently carried items:
             </td>
             <td>
                 <div class="display-field">
-                    <label  >${Armor}</label>
+                    <label id="labelArmor" >${Armor}</label>
                 </div>
             </td>
         </tr>
-        <tr>
+        @*<tr>
             <td>
                 <div class="display-label">
                     Armor per level
@@ -311,7 +278,7 @@ Currently carried items:
                     <label  >${ArmorPerLvl}</label>
                 </div>
             </td>
-        </tr>
+        </tr>*@
         <tr>
             <td>
                 <div class="display-label">
@@ -320,11 +287,11 @@ Currently carried items:
             </td>
             <td>
                 <div class="display-field">
-                    <label  >${MagicResist}</label>
+                    <label id="labelMagicResist"  >${MagicResist}</label>
                 </div>
             </td>
         </tr>
-        <tr>
+        @*<tr>
             <td>
                 <div class="display-label">
                     Magic resist per level
@@ -335,7 +302,7 @@ Currently carried items:
                     <label  >${MagicResistPerLvl}</label>
                 </div>
             </td>
-        </tr>
+        </tr>*@
         <tr>
             <td>
                 <div class="display-label">
@@ -344,7 +311,7 @@ Currently carried items:
             </td>
             <td>
                 <div class="display-field">
-                    <label >${MoveSpeed}</label>
+                    <label id="labelMoveSpeed" >${MoveSpeed}</label>
                 </div>
             </td>
         </tr>

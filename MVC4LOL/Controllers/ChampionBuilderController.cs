@@ -14,8 +14,10 @@ namespace MVC4LOL.Controllers
 
         public ActionResult Builder(Int32 championId)
         {
+            //return View("Builder");
             var model = new ChampionBuilderViewModel();
-            model.Champion = db.ChampionData.First(o => o.ChampionId == championId);
+            Int32 latestPatchId = db.PatchVersions.OrderByDescending(o => o.Date).First().Id;
+            model.Champion = db.ChampionData.First(o => o.ChampionId == championId && o.PatchVersionId == latestPatchId);
             model.Items = db.Items.Where(o => o.Availability.Contains("Common") || o.Availability.Contains("Summoner")).ToList();
             return View("Builder", model);
         }
@@ -23,8 +25,8 @@ namespace MVC4LOL.Controllers
         public ActionResult Load(Int32 championId)
         {
             var model = new ChampionBuilderViewModel();
-
-            model.Champion = db.ChampionData.First(o => o.ChampionId == championId);
+            Int32 latestPatchId = db.PatchVersions.OrderByDescending(o => o.Date).First().Id;
+            model.Champion = db.ChampionData.First(o => o.ChampionId == championId && o.PatchVersionId == latestPatchId);
             model.Items = db.Items.Where(o => o.Availability.Contains("Common") || o.Availability.Contains("Summoner")).ToList();
 
             var jsonResult = Json(ChangeByteArrayToStringForModel(model), JsonRequestBehavior.AllowGet);
