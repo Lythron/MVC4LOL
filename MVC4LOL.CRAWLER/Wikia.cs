@@ -231,8 +231,8 @@ namespace MVC4LOL.CRAWLER
             {
                 String attackSpeedString = tableStatistic.SelectSingleNode("//tr/td[span[a = 'Attack speed']]/following-sibling::td").InnerText.Trim();
                 Match attackSpeedMatch = Regex.Match(attackSpeedString, @"([\d\.]*) ?\( ?\+([\d\.]*)% ?\)");
-                champion.AtkSpeed = Parse(attackSpeedMatch.Groups[1].Value);
-                champion.AtkSpeedPerLvl = Parse(attackSpeedMatch.Groups[2].Value);
+                champion.BaseAttackSpeed = Parse(attackSpeedMatch.Groups[1].Value);
+                champion.AttackSpeedPerLvl = Parse(attackSpeedMatch.Groups[2].Value);
             }
             catch
             {

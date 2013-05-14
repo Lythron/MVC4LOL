@@ -24,7 +24,7 @@ namespace MVC4LOL.Models
 
     //    protected override void OnModelCreating(System.Data.Entity.DbModelBuilder modelBuilder)
     //    {
-    //        modelBuilder.Entity<Champion>().Property(o => o.AtkSpeed).HasPrecision(8, 3);
+    //        modelBuilder.Entity<Champion>().Property(o => o.AttackSpeed).HasPrecision(8, 3);
 
     //        base.OnModelCreating(modelBuilder);
     //    }

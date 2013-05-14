@@ -35,7 +35,7 @@
 //        public Decimal Range { get; set; }
 //        public Decimal Damage { get; set; }
 //        public Decimal DamagePerLvl { get; set; }
-//        public Decimal AtkSpeed { get; set; }
+//        public Decimal AttackSpeed { get; set; }
 //        public Decimal AtsSpeedPerLvl { get; set; }
 //        public Decimal Armor { get; set; }
 //        public Decimal ArmorPerLvl { get; set; }

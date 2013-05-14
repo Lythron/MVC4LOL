@@ -56,15 +56,23 @@ namespace MVC4LOL.Controllers
                     Mana = i.Mana,
                     ManaRegen = i.ManaRegen,
                     MoveSpeed = i.MoveSpeed,
-                    Name = i.Name
+                    Name = i.Name, 
+                    CriticalChance = i.CriticalChance,
+                    CriticalDamage = i.CriticalDamage,
+                    PercentageArmorPen = i.PercentageArmorPen,
+                    FlatArmorPen = i.FlatArmorPen,
+                    PercentageMagicPen = i.PercentageMagicPen,
+                    FlatMagicPen = i.FlatMagicPen,
+                    LifeSteeling = i.LifeSteeling,
+                    SpellVamp = i.SpellVamp
                 }),
                 Champion =  new
                 {
                     Image = o.Champion.Image != null ? Convert.ToBase64String(o.Champion.Image) : String.Empty,
                     Armor = o.Champion.Armor,
                     ArmorPerLvl = o.Champion.ArmorPerLvl,
-                    AtkSpeed = o.Champion.AtkSpeed,
-                    AtkSpeedPerLvl = o.Champion.AtkSpeedPerLvl,
+                    AttackSpeed = o.Champion.BaseAttackSpeed,
+                    AttackSpeedPerLvl = o.Champion.AttackSpeedPerLvl,
                     Champion = o.Champion.Champion,
                     ChampionId = o.Champion.ChampionId,
                     Damage = o.Champion.Damage,

@@ -192,6 +192,70 @@ namespace MVC4LOL.CRAWLER
 
             try
             {
+                String stats = infoDiv.SelectSingleNode("descendant::tr/th[contains(.,'Stats')]/following-sibling::td").InnerText.Trim();
+                if (stats.Contains("ability power"))
+                {
+                    Regex regAbilityPower = new Regex("([\\d]+)%?[\\s]*ability power");
+                    String h = regAbilityPower.Match(stats).Groups[1].Value;
+                    item.AbilityPower = Decimal.Parse(h);
+                }
+            }
+            catch
+            {
+            }
+
+            try
+            {
+                String stats = infoDiv.SelectSingleNode("descendant::tr/th[contains(.,'Stats')]/following-sibling::td").InnerText.Trim();
+                if (stats.Contains("critical strike chance"))
+                {
+                    Regex regCritChance = new Regex("([\\d]+)%?[\\s]*critical strike chance");
+                    String h = regCritChance.Match(stats).Groups[1].Value;
+                    item.CriticalChance = Decimal.Parse(h);
+                }
+            }
+            catch
+            {
+            }
+            
+            // only IE and its in passives not stats.
+            //try
+            //{
+            //    String stats = infoDiv.SelectSingleNode("descendant::tr/th[contains(.,'Stats')]/following-sibling::td").InnerText.Trim();
+            //    if (stats.Contains("critical strike damage"))
+            //    {
+            //        Regex regCritDamage = new Regex("([\\d]+)%?[\\s]*critical strike damage");
+            //        String h = regCritDamage.Match(stats).Groups[1].Value;
+            //        item.CriticalDamage = Decimal.Parse(h);
+            //    }
+            //}
+            //catch
+            //{
+            //}
+
+            try
+            {
+                HtmlNodeCollection descNodes = infoDiv.SelectNodes("descendant::tr/th[a[@href='/wiki/Item#Secondary_effects']]/following-sibling::td");
+
+                String desc = String.Empty;
+
+                foreach (var node in descNodes)
+                {
+                    desc += node.InnerText.Trim();
+                }
+
+                Regex regCooldownReduction = new Regex("([\\d]+)%?[\\s]*cooldown reduction");
+                String h = regCooldownReduction.Match(desc).Groups[1].Value;
+                item.CooldownReduction = Decimal.Parse(h);
+
+                item.Description = desc;
+            }
+            catch
+            {
+            }
+
+            try
+            {
                 String costStr = infoDiv.SelectSingleNode("descendant::tr/th[contains(.,'Item cost')]/following-sibling::td").InnerText.Trim();
                 item.Cost = Int32.Parse(costStr.Substring(0, costStr.IndexOf("g")));
             }

@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="POCO\BaseStats.cs" />
     <Compile Include="POCO\Build.cs" />
     <Compile Include="POCO\Champion.cs" />
     <Compile Include="POCO\ChampionData.cs" />

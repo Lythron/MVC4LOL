@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace MVC4LOL.Model
 {
     [Table("ChampionData")]
-    public class ChampionData
+    public class ChampionData : BaseStats
     {
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
@@ -29,26 +29,42 @@ namespace MVC4LOL.Model
         public Int32 IP_Cost { get; set; }
         public Int32 RP_Cost { get; set; }
         
-
-        // TODO : move to base stats, rename Atk to Attack
-        public Decimal Health { get; set; }
+        //public Decimal Health { get; set; }
         public Decimal HealthPerLvl { get; set; }
-        public Decimal HealthRegen { get; set; }
+        //public Decimal HealthRegen { get; set; }
         public Decimal HealthRegenPerLvl { get; set; }
-        public Decimal Mana { get; set; }
+        //public Decimal Mana { get; set; }
         public Decimal ManaPerLvl { get; set; }
-        public Decimal ManaRegen { get; set; }
+        //public Decimal ManaRegen { get; set; }
         public Decimal ManaRegenPerLvl { get; set; }
         public Decimal Range { get; set; }
-        public Decimal Damage { get; set; }
+        //public Decimal Damage { get; set; }
         public Decimal DamagePerLvl { get; set; }
-        public Decimal AtkSpeed { get; set; }
-        public Decimal AtkSpeedPerLvl { get; set; }
-        public Decimal Armor { get; set; }
+        
+        //public Decimal AttackSpeed { get; set; } // TODO : delete
+        public Decimal BaseAttackSpeed { get; set; }
+        //public Decimal AttackSpeedPerLvl { get; set; } // TODO: delete
+        public Decimal AttackSpeedPerLvl { get; set; }
+        
+        //public Decimal Armor { get; set; }
         public Decimal ArmorPerLvl { get; set; }
-        public Decimal MagicResist { get; set; }
+        //public Decimal MagicResist { get; set; }
         public Decimal MagicResistPerLvl { get; set; }
-        public Decimal MoveSpeed { get; set; }
+        //public Decimal MoveSpeed { get; set; }
+
+        //public Decimal CriticalChance { get; set; }
+        //public Decimal CriticalDamage { get; set; }
+        //public Decimal FlatArmorPen { get; set; }
+        //public Decimal PercentageArmorPen { get; set; }
+        //public Decimal FlatMagicPen { get; set; }
+        //public Decimal PercentageMagicPen { get; set; }
+        //public Decimal LifeSteeling { get; set; }
+        //public Decimal SpellVamp { get; set; }
+        //public Decimal PercentageHealthBonus { get; set; }
+        //public Decimal PercentageHealingBonus { get; set; }
+        //public Decimal PercentageMoveBonus { get; set; }
+        //public Decimal AbilityPower { get; set; }
+        // Moved to base stats in order to not repeating it for items.
 
         //public virtual List<Skill> Skills { get; set; }
 

@@ -234,6 +234,26 @@
     <Compile Include="Migrations\201305071248472_itemCost.Designer.cs">
       <DependentUpon>201305071248472_itemCost.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201305131023525_ChampionExtendedProperties.cs" />
+    <Compile Include="Migrations\201305131023525_ChampionExtendedProperties.Designer.cs">
+      <DependentUpon>201305131023525_ChampionExtendedProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305131049040_clean.cs" />
+    <Compile Include="Migrations\201305131049040_clean.Designer.cs">
+      <DependentUpon>201305131049040_clean.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305131106392_ap.cs" />
+    <Compile Include="Migrations\201305131106392_ap.Designer.cs">
+      <DependentUpon>201305131106392_ap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305131137171_basestats.cs" />
+    <Compile Include="Migrations\201305131137171_basestats.Designer.cs">
+      <DependentUpon>201305131137171_basestats.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305140903014_cooldownReduction.cs" />
+    <Compile Include="Migrations\201305140903014_cooldownReduction.Designer.cs">
+      <DependentUpon>201305140903014_cooldownReduction.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Champion.cs" />
@@ -311,6 +331,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <None Include="Scripts\Libs\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\builder.js" />
     <Content Include="Scripts\detailsBuilder.js" />
     <Content Include="Scripts\levelingBuilder.js" />
     <Content Include="Scripts\dataservice.js" />
@@ -453,6 +474,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201305071248472_itemCost.resx">
       <DependentUpon>201305071248472_itemCost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305131023525_ChampionExtendedProperties.resx">
+      <DependentUpon>201305131023525_ChampionExtendedProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305131049040_clean.resx">
+      <DependentUpon>201305131049040_clean.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305131106392_ap.resx">
+      <DependentUpon>201305131106392_ap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305131137171_basestats.resx">
+      <DependentUpon>201305131137171_basestats.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305140903014_cooldownReduction.resx">
+      <DependentUpon>201305140903014_cooldownReduction.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

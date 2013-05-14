@@ -71,3 +71,8 @@ C:\Projects\Education\MVC4LOL\MVC4LOL\obj\Debug\MVC4LOL.Migrations.itemImage.res
 C:\Projects\Education\MVC4LOL\MVC4LOL\obj\Debug\MVC4LOL.Migrations.itemName.resources
 C:\Projects\Education\MVC4LOL\MVC4LOL\obj\Debug\MVC4LOL.Migrations.itemAvailability.resources
 C:\Projects\Education\MVC4LOL\MVC4LOL\obj\Debug\MVC4LOL.Migrations.itemCost.resources
+C:\Projects\Education\MVC4LOL\MVC4LOL\obj\Debug\MVC4LOL.Migrations.ChampionExtendedProperties.resources
+C:\Projects\Education\MVC4LOL\MVC4LOL\obj\Debug\MVC4LOL.Migrations.clean.resources
+C:\Projects\Education\MVC4LOL\MVC4LOL\obj\Debug\MVC4LOL.Migrations.ap.resources
+C:\Projects\Education\MVC4LOL\MVC4LOL\obj\Debug\MVC4LOL.Migrations.basestats.resources
+C:\Projects\Education\MVC4LOL\MVC4LOL\obj\Debug\MVC4LOL.Migrations.cooldownReduction.resources

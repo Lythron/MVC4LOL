@@ -9,9 +9,12 @@ namespace MVC4LOL
         public static void RegisterBundles(BundleCollection bundles)
         {
 
+            //bundles.Add(new ScriptBundle("~/bundles/builder").Include(
+            //            "~/Scripts/detailsBuilder.js",
+            //            "~/Scripts/levelingBuilder.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/builder").Include(
-                        "~/Scripts/detailsBuilder.js",
-                        "~/Scripts/levelingBuilder.js"));
+                        "~/Scripts/builder.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/leveling").Include(
                         "~/Scripts/leveling.js",

@@ -10,7 +10,7 @@
     
     $(document).ready(function () {
         
-        detailsBuilder.init(@Model.Champion.ChampionId); 
+        builder.init(@Model.Champion.ChampionId); 
     });
 
 </script>
@@ -27,6 +27,49 @@ Currently carried items:
 
 </div>
 }
+Autoattack damage per second :
+<table>
+    <tr>
+        <td>
+            <label id="labelNoArmorArmor">
+            0 
+            </label>
+        </td>
+        <td>
+            <label id="labelNoArmorDamage" ></label>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label id="labelLightArmorArmor">
+            30 
+            </label>
+        </td>
+        <td>
+            <label id="labelLightArmorDamage" ></label>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label id="labelMediumArmorArmor">
+            100 
+            </label>
+        </td>
+        <td>
+            <label id="labelMediumArmorDamage" ></label>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label id="labelHeavyArmorArmor">
+            200 
+            </label>
+        </td>
+        <td>
+            <label id="labelHeavyArmorDamage" ></label>
+        </td>
+    </tr>
+</table>
 <div style="clear:both" ></div>
 <div id="Champion">
 </div>
@@ -51,54 +94,6 @@ Currently carried items:
                 </div>
             </td>
         </tr>
-        @*<tr>
-            <td>
-                <div class="display-label">
-                     Title
-                </div>
-            </td>
-            <td>
-                <div class="display-field">
-                    <label >${Title}</label>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div class="display-label">
-                     Release date
-                </div>
-            </td>
-            <td>
-                <div class="display-field">
-                    <label  > ${ReleaseDate}</label>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div class="display-label">
-                     IP Cost
-                </div>
-            </td>
-            <td>
-                <div class="display-field">
-                    <label  >${IP_Cost}</label> 
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div class="display-label">
-                     RP Cost
-                </div>
-            </td>
-            <td>
-                <div class="display-field">
-                    <label >${RP_Cost}</label> 
-                </div>
-            </td>
-        </tr>*@
         <tr>
             <td>
                 <div class="display-label">
@@ -111,18 +106,6 @@ Currently carried items:
                 </div>
             </td>
         </tr>
-        @*<tr>
-            <td>
-                <div class="display-label">
-                     Health per level
-                </div>
-            </td>
-            <td>
-                <div class="display-field">
-                    <label  >${HealthPerLvl}</label>
-                </div>
-            </td>
-        </tr>*@
         <tr>
             <td>
                 <div class="display-label">
@@ -135,18 +118,6 @@ Currently carried items:
                 </div>
             </td>
         </tr>
-        @*<tr>
-            <td>
-                <div class="display-label">
-                     Health regen per level
-                </div>
-            </td>
-            <td>
-                <div class="display-field">
-                    <label  >${HealthRegenPerLvl}</label>
-                </div>
-            </td>
-        </tr>*@
         <tr>
             <td>
                 <div class="display-label">
@@ -159,18 +130,6 @@ Currently carried items:
                 </div>
             </td>
         </tr>
-        @*<tr>
-            <td>
-                <div class="display-label">
-                    Mana per level
-                </div>
-            </td>
-            <td>
-                <div class="display-field">
-                    <label  >${ManaPerLvl}</label>
-                </div>
-            </td>
-        </tr>*@
         <tr>
             <td>
                 <div class="display-label">
@@ -183,18 +142,6 @@ Currently carried items:
                 </div>
             </td>
         </tr>
-         @*<tr>
-            <td>
-                <div class="display-label">
-                    Mana regen per level
-                </div>
-            </td>
-            <td>
-                <div class="display-field">
-                    <label  >${ManaRegenPerLvl}</label>
-                </div>
-            </td>
-        </tr>*@
          <tr>
             <td>
                 <div class="display-label">
@@ -219,18 +166,6 @@ Currently carried items:
                 </div>
             </td>
         </tr>
-        @*<tr>
-            <td>
-                <div class="display-label">
-                    Damage per level
-                </div>
-            </td>
-            <td>
-                <div class="display-field">
-                    <label  >${DamagePerLvl}</label>
-                </div>
-            </td>
-        </tr>*@
         <tr>
             <td>
                 <div class="display-label">
@@ -239,22 +174,58 @@ Currently carried items:
             </td>
             <td>
                 <div class="display-field">
-                    <label id="labelAttackSpeed" >${AtkSpeed}</label>
+                    <label id="labelAttackSpeed" >${AttackSpeed}</label>
                 </div>
             </td>
         </tr>
-        @*<tr>
+        <tr>
             <td>
                 <div class="display-label">
-                    Attack speed per level
+                    Critical chance
                 </div>
             </td>
             <td>
                 <div class="display-field">
-                    <label  >${AtkSpeedPerLvl}</label>
+                    <label id="labelCriticalChance" ></label>
                 </div>
             </td>
-        </tr>*@
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                    Critical Damage multiplier
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label id="labelCriticalDamage" >2</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                    Percentage armor pen.
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label id="labelPercentageArmorPen" >0</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                    Flat armor pen.
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label id="labelFlatArmorPen" >0</label>
+                </div>
+            </td>
+        </tr>
         <tr>
             <td>
                 <div class="display-label">
@@ -267,18 +238,6 @@ Currently carried items:
                 </div>
             </td>
         </tr>
-        @*<tr>
-            <td>
-                <div class="display-label">
-                    Armor per level
-                </div>
-            </td>
-            <td>
-                <div class="display-field">
-                    <label  >${ArmorPerLvl}</label>
-                </div>
-            </td>
-        </tr>*@
         <tr>
             <td>
                 <div class="display-label">
@@ -291,18 +250,6 @@ Currently carried items:
                 </div>
             </td>
         </tr>
-        @*<tr>
-            <td>
-                <div class="display-label">
-                    Magic resist per level
-                </div>
-            </td>
-            <td>
-                <div class="display-field">
-                    <label  >${MagicResistPerLvl}</label>
-                </div>
-            </td>
-        </tr>*@
         <tr>
             <td>
                 <div class="display-label">

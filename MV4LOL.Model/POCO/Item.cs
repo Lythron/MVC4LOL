@@ -23,16 +23,4 @@ namespace MVC4LOL.Model
         public Int32 Cost { get; set; }
     }
 
-    public abstract class BaseStats
-    {
-        public Decimal Health { get; set; }
-        public Decimal HealthRegen { get; set; }
-        public Decimal Mana { get; set; }
-        public Decimal ManaRegen { get; set; }
-        public Decimal Damage { get; set; }
-        public Decimal AttackSpeed { get; set; }
-        public Decimal Armor { get; set; }
-        public Decimal MagicResist { get; set; }
-        public Decimal MoveSpeed { get; set; }
-    }
 }

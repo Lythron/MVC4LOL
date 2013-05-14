@@ -12,7 +12,7 @@ namespace MVC4LOL.Controllers
     [Authorize]
     public class ChampionJsonController : Controller
     {
-        //TEST if used.
+        //TODO DELETE.
         //public ActionResult Index()
         //{ 
         //    MVC4LOLDb us = new MVC4LOLDb();
@@ -58,8 +58,8 @@ namespace MVC4LOL.Controllers
                     Image = c.Image != null ? Convert.ToBase64String(c.Image) : String.Empty,
                     Armor = c.Armor,
                     ArmorPerLvl = c.ArmorPerLvl,
-                    AtkSpeed = c.AtkSpeed,
-                    AtkSpeedPerLvl = c.AtkSpeedPerLvl,
+                    AttackSpeed = c.BaseAttackSpeed,
+                    AttackSpeedPerLvl = c.AttackSpeedPerLvl,
                     Champion = c.Champion,
                     ChampionId = c.ChampionId,
                     Damage = c.Damage,
@@ -123,8 +123,8 @@ namespace MVC4LOL.Controllers
                                 Image = c.Image != null ? Convert.ToBase64String(c.Image) : String.Empty,
                                 Armor = c.Armor,
                                 ArmorPerLvl = c.ArmorPerLvl,
-                                AtkSpeed = c.AtkSpeed,
-                                AtkSpeedPerLvl = c.AtkSpeedPerLvl,
+                                AttackSpeed = c.BaseAttackSpeed,
+                                AttackSpeedPerLvl = c.AttackSpeedPerLvl,
                                 Champion = c.Champion,
                                 ChampionId = c.ChampionId,
                                 Damage = c.Damage,
