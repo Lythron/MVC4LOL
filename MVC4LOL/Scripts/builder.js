@@ -114,7 +114,7 @@ var builder = function () {
 
     },
 
-    levelingInit = function (data) { 
+    levelingInit = function (data) {
         _data = data;
         $('input[name="buttonLvlUp"]').click(function () {
             increaseLvl();
@@ -161,19 +161,19 @@ var builder = function () {
         $('#labelCriticalChance').text(criticalChance);
 
         renderDamage();
+        renderHealth();
 
     },
 
     computeDamage = function (armor) {
         var damage = parseFloat($("#labelDamage").text());
-        var attackSpeed = parseFloat($("#labelAttackSpeed").text());
+        //var attackSpeed = parseFloat($("#labelAttackSpeed").text());
         var attackCritChance = parseFloat($("#labelCriticalChance").text());
         var attackCritDamage = parseFloat($("#labelCriticalDamage").text());
-        var attackSpeed = parseFloat($("#labelAttackSpeed").text());
         var percentageArmorPen = parseFloat($("#labelPercentageArmorPen").text());
         var flatArmorPen = parseFloat($("#labelFlatArmorPen").text());
 
-        var effectiveDamage = damage * attackSpeed * ( 1 +  (attackCritChance/100 * (attackCritDamage - 1)));
+        var effectiveDamage = damage * (1 + (attackCritChance / 100 * (attackCritDamage - 1)));
         var effectiveArmor = armor * (1 - percentageArmorPen) - flatArmorPen;
 
         var damageDone = (effectiveDamage * 100) / (100 + effectiveArmor);
@@ -181,15 +181,68 @@ var builder = function () {
         return damageDone;
     },
 
+    computeDPS = function (armor) {
+        var attackSpeed = parseFloat($("#labelAttackSpeed").text());
+
+        return computeDamage(armor) * attackSpeed;
+    },
+
     renderDamage = function () {
         var noArmor = parseFloat($("#labelNoArmorArmor").text());
         $('#labelNoArmorDamage').text(computeDamage(noArmor));
+        $('#labelNoArmorDPS').text(computeDPS(noArmor));
         var lightArmor = parseFloat($("#labelLightArmorArmor").text());
+        $('#labelLightArmorDPS').text(computeDPS(lightArmor));
         $('#labelLightArmorDamage').text(computeDamage(lightArmor));
         var mediumArmor = parseFloat($("#labelMediumArmorArmor").text());
         $('#labelMediumArmorDamage').text(computeDamage(mediumArmor));
+        $('#labelMediumArmorDPS').text(computeDPS(mediumArmor));
         var heavyArmor = parseFloat($("#labelHeavyArmorArmor").text());
         $('#labelHeavyArmorDamage').text(computeDamage(heavyArmor));
+        $('#labelHeavyArmorDPS').text(computeDPS(heavyArmor));
+    },
+
+    computeHealth = function (percentagePen, flatPen, resist, health) {
+        var effectiveResist = (resist * (1 - percentagePen / 100) - flatPen);
+        if (effectiveResist < 0)
+        {
+            effectiveResist = 0;
+        }
+        var effectiveHealth = health * (1 + effectiveResist / 100);
+        return effectiveHealth;
+    };
+
+    renderHealth = function () {
+        var health = parseFloat($("#labelHealth").text());
+        var armor = parseFloat($("#labelArmor").text());
+        var magicResist = parseFloat($("#labelMagicResist").text());
+
+        var noPercentageArmorPen = parseFloat($("#labelNoPercentageArmorPen").text());
+        var noFlatArmorPen = parseFloat($("#labelNoFlatArmorPen").text());
+        $('#labelEffectiveHealthNoArmorPen').text(computeHealth(noPercentageArmorPen, noFlatArmorPen, armor, health));
+        var lightPercentageArmorPen = parseFloat($("#labelLightPercentageArmorPen").text());
+        var lightFlatArmorPen = parseFloat($("#labelLightFlatArmorPen").text());
+        $('#labelEffectiveHealthLightArmorPen').text(computeHealth(lightPercentageArmorPen, lightFlatArmorPen, armor, health));
+        var mediumPercentageArmorPen = parseFloat($("#labelMediumPercentageArmorPen").text());
+        var mediumFlatArmorPen = parseFloat($("#labelMediumFlatArmorPen").text());
+        $('#labelEffectiveHealthMediumArmorPen').text(computeHealth(mediumPercentageArmorPen, mediumFlatArmorPen, armor, health));
+        var heavyPercentageArmorPen = parseFloat($("#labelHeavyPercentageArmorPen").text());
+        var heavyFlatArmorPen = parseFloat($("#labelHeavyFlatArmorPen").text());
+        $('#labelEffectiveHealthHeavyArmorPen').text(computeHealth(heavyPercentageArmorPen, heavyFlatArmorPen, armor, health));
+
+        var noPercentageMagicResistPen = parseFloat($("#labelNoPercentageMagicResistPen").text());
+        var noFlatMagicResistPen = parseFloat($("#labelNoFlatMagicResistPen").text());
+        $('#labelEffectiveHealthNoMagicResistPen').text(computeHealth(noPercentageMagicResistPen, noFlatMagicResistPen, magicResist, health));
+        var lightPercentageMagicResistPen = parseFloat($("#labelLightPercentageMagicResistPen").text());
+        var lightFlatMagicResistPen = parseFloat($("#labelLightFlatMagicResistPen").text());
+        $('#labelEffectiveHealthLightMagicResistPen').text(computeHealth(lightPercentageMagicResistPen, lightFlatMagicResistPen, magicResist, health));
+        var mediumPercentageMagicResistPen = parseFloat($("#labelMediumPercentageMagicResistPen").text());
+        var mediumFlatMagicResistPen = parseFloat($("#labelMediumFlatMagicResistPen").text());
+        $('#labelEffectiveHealthMediumMagicResistPen').text(computeHealth(mediumPercentageMagicResistPen, mediumFlatMagicResistPen, magicResist, health));
+        var heavyPercentageMagicResistPen = parseFloat($("#labelHeavyPercentageMagicResistPen").text());
+        var heavyFlatMagicResistPen = parseFloat($("#labelHeavyFlatMagicResistPen").text());
+        $('#labelEffectiveHealthHeavyMagicResistPen').text(computeHealth(heavyPercentageMagicResistPen, heavyFlatMagicResistPen, magicResist, health));
+            
     }
 
     return {
@@ -206,6 +259,11 @@ var builder = function () {
         adjustLvl: adjustLvl,
 
         computeDamage: computeDamage,
-        renderDamage: renderDamage
+        computeDPS: computeDPS,
+        renderDamage: renderDamage,
+
+        computeHealth: computeHealth,
+        renderHealth: renderHealth,
+        
     }
 }();
