@@ -191,6 +191,9 @@ Autoattack damage per second :
         <th>
             DPS
         </th>
+        <th>
+            Life leeched
+        </th>
     </tr>
     <tr>
         <td>
@@ -203,6 +206,9 @@ Autoattack damage per second :
         </td>
         <td>
             <label id="labelNoArmorDPS" ></label>
+        </td>
+        <td>
+            <label id="labelNoArmorLifeSteal" ></label>
         </td>
     </tr>
     <tr>
@@ -217,6 +223,9 @@ Autoattack damage per second :
         <td>
             <label id="labelLightArmorDPS" ></label>
         </td>
+        <td>
+            <label id="labelLightArmorLifeSteal" ></label>
+        </td>
     </tr>
     <tr>
         <td>
@@ -229,6 +238,9 @@ Autoattack damage per second :
         </td>
         <td>
             <label id="labelMediumArmorDPS" ></label>
+        </td>
+        <td>
+            <label id="labelMediumArmorLifeSteal" ></label>
         </td>
     </tr>
     <tr>
@@ -243,6 +255,9 @@ Autoattack damage per second :
         <td>
             <label id="labelHeavyArmorDPS" ></label>
         </td>
+        <td>
+            <label id="labelHeavyArmorLifeSteal" ></label>
+        </td>
     </tr>
 </table>
 <div style="clear:both" ></div>
@@ -252,7 +267,7 @@ Autoattack damage per second :
 </div>
 
 <script id="ItemTemplate" type="text/x-jquery-tmpl" >
-    <img id="itemImage${Id}" src="data:image/png;base64, ${Image}" height="60" alt="${Name}" title="${Name} ${Title}" />
+    <img id="itemImage${Id}" src="data:image/png;base64, ${Image}" height="60" alt="${Name}" title="${Description}" />
 </script>
 <script id="ChampionTemplate" type="text/x-jquery-tmpl" >
     <img src="data:image/png;base64, ${Image}" height="70" alt="${Name}" title="${Name} ${Title}" />
@@ -404,6 +419,18 @@ Autoattack damage per second :
         <tr>
             <td>
                 <div class="display-label">
+                    Lifestealing
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label id="labelLifeSteal" >0</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
                     Armor
                 </div>
             </td>
@@ -434,6 +461,42 @@ Autoattack damage per second :
             <td>
                 <div class="display-field">
                     <label id="labelMoveSpeed" >${MoveSpeed}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                    Cooldown reduction
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label id="labelCooldownReduction" >0</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                    Ability power
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label id="labelAbilityPower" >0</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="display-label">
+                    Spell vampirism
+                </div>
+            </td>
+            <td>
+                <div class="display-field">
+                    <label id="labelSpellVamp" >0</label>
                 </div>
             </td>
         </tr>

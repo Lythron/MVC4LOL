@@ -76,3 +76,4 @@ C:\Projects\Education\MVC4LOL\MVC4LOL\obj\Debug\MVC4LOL.Migrations.clean.resourc
 C:\Projects\Education\MVC4LOL\MVC4LOL\obj\Debug\MVC4LOL.Migrations.ap.resources
 C:\Projects\Education\MVC4LOL\MVC4LOL\obj\Debug\MVC4LOL.Migrations.basestats.resources
 C:\Projects\Education\MVC4LOL\MVC4LOL\obj\Debug\MVC4LOL.Migrations.cooldownReduction.resources
+C:\Projects\Education\MVC4LOL\MVC4LOL\obj\Debug\MVC4LOL.Migrations.rename.resources

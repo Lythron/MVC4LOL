@@ -63,8 +63,10 @@ namespace MVC4LOL.Controllers
                     FlatArmorPen = i.FlatArmorPen,
                     PercentageMagicPen = i.PercentageMagicPen,
                     FlatMagicPen = i.FlatMagicPen,
-                    LifeSteeling = i.LifeSteeling,
-                    SpellVamp = i.SpellVamp
+                    LifeSteal = i.LifeSteal,
+                    SpellVamp = i.SpellVamp,
+                    AbilityPower = i.AbilityPower,
+                    CooldownReduction = i.CooldownReduction,
                 }),
                 Champion =  new
                 {

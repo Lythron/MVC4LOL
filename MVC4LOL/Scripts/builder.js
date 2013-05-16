@@ -10,6 +10,10 @@ var bonusAttackSpeed = 0;
 var bonusArmor = 0;
 var bonusMagicResist = 0;
 var criticalChance = 0;
+var bonusAbilityPower = 0;
+var itemsLifeSteal = 0;
+var itemsSpellVamp = 0;
+var itemsCooldownReduction = 0;
 
 var builder = function () {
     init = function (championId) {
@@ -81,6 +85,10 @@ var builder = function () {
         bonusArmor = 0;
         bonusMagicResist = 0;
         criticalChance = 0;
+        bonusAbilityPower = 0;
+        itemsLifeSteal = 0;
+        itemsSpellVamp = 0;
+        itemsCooldownReduction = 0;
 
         for (var itemKey in carriedItems) {
             try {
@@ -99,6 +107,10 @@ var builder = function () {
                 bonusArmor += g.Armor;
                 bonusMagicResist += g.MagicResist;
                 criticalChance += g.CriticalChance;
+                bonusAbilityPower += g.AbilityPower;
+                itemsLifeSteal += g.LifeSteal;
+                itemsSpellVamp += g.SpellVamp;
+                itemsCooldownReduction += g.CooldownReduction;
             }
             catch (excepion) {
             };
@@ -158,7 +170,16 @@ var builder = function () {
         $('#labelAttackSpeed').text(computedAttackSpeed);
         $('#labelArmor').text(champ.Armor + champ.ArmorPerLvl * level + bonusArmor);
         $('#labelMagicResist').text(champ.MagicResist + champ.MagicResistPerLvl * level + bonusMagicResist);
+        $('#labelLifeSteal').text(itemsLifeSteal);
+        $('#labelSpellVamp').text(itemsSpellVamp);
         $('#labelCriticalChance').text(criticalChance);
+        $('#labelAbilityPower').text(bonusAbilityPower);
+        var computedCooldownReduction = itemsCooldownReduction;
+        if (computedCooldownReduction > 40)
+        {
+            computedCooldownReduction = 40;
+        }
+        $('#labelCooldownReduction').text(computedCooldownReduction);
 
         renderDamage();
         renderHealth();
@@ -188,18 +209,23 @@ var builder = function () {
     },
 
     renderDamage = function () {
+        var lifeSteal = parseFloat($('#labelLifeSteal').text()) / 100;
         var noArmor = parseFloat($("#labelNoArmorArmor").text());
         $('#labelNoArmorDamage').text(computeDamage(noArmor));
         $('#labelNoArmorDPS').text(computeDPS(noArmor));
+        $('#labelNoArmorLifeSteal').text(computeDPS(noArmor) * lifeSteal);
         var lightArmor = parseFloat($("#labelLightArmorArmor").text());
-        $('#labelLightArmorDPS').text(computeDPS(lightArmor));
         $('#labelLightArmorDamage').text(computeDamage(lightArmor));
+        $('#labelLightArmorDPS').text(computeDPS(lightArmor));
+        $('#labelLightArmorLifeSteal').text(computeDPS(lightArmor) * lifeSteal);
         var mediumArmor = parseFloat($("#labelMediumArmorArmor").text());
         $('#labelMediumArmorDamage').text(computeDamage(mediumArmor));
         $('#labelMediumArmorDPS').text(computeDPS(mediumArmor));
+        $('#labelMediumArmorLifeSteal').text(computeDPS(mediumArmor) * lifeSteal);
         var heavyArmor = parseFloat($("#labelHeavyArmorArmor").text());
         $('#labelHeavyArmorDamage').text(computeDamage(heavyArmor));
         $('#labelHeavyArmorDPS').text(computeDPS(heavyArmor));
+        $('#labelHeavyArmorLifeSteal').text(computeDPS(heavyArmor) * lifeSteal);
     },
 
     computeHealth = function (percentagePen, flatPen, resist, health) {
@@ -264,6 +290,5 @@ var builder = function () {
 
         computeHealth: computeHealth,
         renderHealth: renderHealth,
-        
     }
 }();

@@ -23,7 +23,7 @@ namespace MVC4LOL.Model
         public Decimal PercentageArmorPen { get; set; }
         public Decimal FlatMagicPen { get; set; }
         public Decimal PercentageMagicPen { get; set; }
-        public Decimal LifeSteeling { get; set; }
+        public Decimal LifeSteal { get; set; }
         public Decimal SpellVamp { get; set; }
         public Decimal PercentageHealthBonus { get; set; }
         public Decimal PercentageHealingBonus { get; set; }

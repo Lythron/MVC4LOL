@@ -6,7 +6,9 @@ update ChampionData set BaseAttackSpeed = AttackSpeed;
 select baseattackSpeed, AttackSpeed from ChampionData;
 
 select Name, CooldownReduction from item where CooldownReduction > 0;
-select * from item where CriticalChance > 0;
+select * from item where CooldownReduction > 0;
+
+
 select * From skill;
 
 select * from PatchVersion;

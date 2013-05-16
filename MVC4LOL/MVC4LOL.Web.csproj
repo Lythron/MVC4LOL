@@ -254,6 +254,10 @@
     <Compile Include="Migrations\201305140903014_cooldownReduction.Designer.cs">
       <DependentUpon>201305140903014_cooldownReduction.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201305160957431_rename.cs" />
+    <Compile Include="Migrations\201305160957431_rename.Designer.cs">
+      <DependentUpon>201305160957431_rename.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Champion.cs" />
@@ -332,8 +336,6 @@
     <Content Include="Global.asax" />
     <None Include="Scripts\Libs\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\builder.js" />
-    <Content Include="Scripts\detailsBuilder.js" />
-    <Content Include="Scripts\levelingBuilder.js" />
     <Content Include="Scripts\dataservice.js" />
     <Content Include="Scripts\details.js" />
     <Content Include="Scripts\Libs\jquery-1.9.1.js" />
@@ -489,6 +491,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201305140903014_cooldownReduction.resx">
       <DependentUpon>201305140903014_cooldownReduction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305160957431_rename.resx">
+      <DependentUpon>201305160957431_rename.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

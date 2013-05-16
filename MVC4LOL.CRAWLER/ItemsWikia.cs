@@ -49,6 +49,8 @@ namespace MVC4LOL.CRAWLER
             HtmlDocument doc = new HtmlDocument();
             Item item = new Item();
 
+            item.Description = String.Empty;
+
             HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(siteUrl + url);
             request.Timeout = 10000;
             using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
@@ -77,6 +79,15 @@ namespace MVC4LOL.CRAWLER
             try
             {
                 item.Name = infoDiv.SelectSingleNode("descendant::div/b").InnerText.Trim();
+
+                using (MVC4LOLDb db = new MVC4LOLDb())
+                {
+                    if (db.Items.Select(o => o.Name).Contains(item.Name))
+                    {
+                        return;   
+                    }
+                }
+
             }
             catch
             { 
@@ -108,6 +119,7 @@ namespace MVC4LOL.CRAWLER
                     String h = regHealth.Match(stats).Groups[1].Value;
                     item.Health = Decimal.Parse(h);
                 }
+                item.Description = stats;
             }
             catch
             {
@@ -244,11 +256,82 @@ namespace MVC4LOL.CRAWLER
                     desc += node.InnerText.Trim();
                 }
 
-                Regex regCooldownReduction = new Regex("([\\d]+)%?[\\s]*cooldown reduction");
-                String h = regCooldownReduction.Match(desc).Groups[1].Value;
-                item.CooldownReduction = Decimal.Parse(h);
+                item.Description += desc;
 
-                item.Description = desc;
+                // refactor
+                // insert string (stats or desc ) as param and run algorithm for both
+                // rename variables ( h, )
+                Regex regLifeSteal = new Regex("([\\d]+)%?[\\s]*life steal");
+                String h = regLifeSteal.Match(desc).Groups[1].Value;
+                item.LifeSteal = Decimal.Parse(h);
+            
+            }
+            catch
+            {
+            }
+
+            try
+            {
+                HtmlNodeCollection descNodes = infoDiv.SelectNodes("descendant::tr/th[a[@href='/wiki/Item#Secondary_effects']]/following-sibling::td");
+
+                String desc = String.Empty;
+
+                foreach (var node in descNodes)
+                {
+                    desc += node.InnerText.Trim();
+                }
+
+                Regex regSpellVamp = new Regex("([\\d]+)%?[\\s]*spell vamp");
+                String hs = regSpellVamp.Match(desc).Groups[1].Value;
+                item.SpellVamp = Decimal.Parse(hs);
+            }
+            catch
+            {
+            }
+
+            try
+            {
+                HtmlNodeCollection descNodes = infoDiv.SelectNodes("descendant::tr/th[a[@href='/wiki/Item#Secondary_effects']]/following-sibling::td");
+
+                String desc = String.Empty;
+
+                foreach (var node in descNodes)
+                {
+                    desc += node.InnerText.Trim();
+                }
+
+                Regex regCooldownReduction = new Regex("([\\d]+)%?[\\s]*cooldown reduction");
+                String hc = regCooldownReduction.Match(desc).Groups[1].Value;
+                item.CooldownReduction = Decimal.Parse(hc);
+
+            }
+            catch
+            {
+            }
+
+            try
+            {
+                String stats = infoDiv.SelectSingleNode("descendant::tr/th[contains(.,'Stats')]/following-sibling::td").InnerText.Trim();
+                if (stats.Contains("life steal"))
+                {
+                    Regex regLifeSteal = new Regex("([\\d]+)%?[\\s]*life steal");
+                    String h = regLifeSteal.Match(stats).Groups[1].Value;
+                    item.LifeSteal = Decimal.Parse(h);
+                }
+            }
+            catch
+            {
+            }
+
+            try
+            {
+                String stats = infoDiv.SelectSingleNode("descendant::tr/th[contains(.,'Stats')]/following-sibling::td").InnerText.Trim();
+                if (stats.Contains("spell vamp"))
+                {
+                    Regex regSpellVamp = new Regex("([\\d]+)%?[\\s]*spell vamp");
+                    String h = regSpellVamp.Match(stats).Groups[1].Value;
+                    item.SpellVamp = Decimal.Parse(h);
+                }
             }
             catch
             {
