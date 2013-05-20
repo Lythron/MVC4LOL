@@ -15,12 +15,21 @@
 
 </script>
 
+<div id="divMap">
+    <select id="selectMap" >
+        <option value="1" selected="selected" >Summoner's Rift</option>
+        <option value="2">Dominion</option>
+        <option value="3">Howling Abyss</option>
+        <option value="4">Twisted Treeline</option>
+    </select>
+</div>
+
 <input type="button" name="buttonLvlUp" id="buttonLvlUp" value="LvlUp" />
 <input type="button" name="buttonLvlDown" id="buttonLvlDown" value="LvlDown" />
 <label id="labelLvl" >1</label>
 
 Currently carried items:
-</br>
+<br />
 @for (var i = 1; i<=6; i++)
 {
 <div id="divItem@(i)" style="width:60px;height:60px;border:1px solid red;float:left">
@@ -263,11 +272,26 @@ Autoattack damage per second :
 <div style="clear:both" ></div>
 <div id="Champion">
 </div>
+<div id="ItemsFilter">
+    <label><input id="InputItemDamage" type="checkbox" value="damage" title="damage" />Damage</label> 
+    <label><input id="InputItemHealth" type="checkbox" value="health" title="health" />Health</label> 
+</div>
 <div id="Items">
 </div>
+<script id="ItemTagsSelectTemplate" type="text/x-jquery-tmpl">
+    <div style="float:left">
+        <label for="Select${Name}" style="white-space:nowrap; float:left;margin-right:15px" >${Name}</label> 
+        <select id="Select${Name}" title="${Name}">
+            <option value="whatever" title="${Name}">=</option>
+            <option value="or" title="${Name}" >or</option>
+            <option value="and" title="${Name}" >and</option>
+            <option value="out" title="${Name}" >out</option>
+        </select>
+    </div>
+</script>
 
 <script id="ItemTemplate" type="text/x-jquery-tmpl" >
-    <img id="itemImage${Id}" src="data:image/png;base64, ${Image}" height="60" alt="${Name}" title="${Description}" />
+    <img id="itemImage${Id}" class="${Availability}" src="data:image/png;base64, ${Image}" height="60" alt="${Name}" title="${Description}" />
 </script>
 <script id="ChampionTemplate" type="text/x-jquery-tmpl" >
     <img src="data:image/png;base64, ${Image}" height="70" alt="${Name}" title="${Name} ${Title}" />

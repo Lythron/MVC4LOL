@@ -63,6 +63,7 @@ namespace MVC4LOL.CRAWLER
             }
             
             HtmlNode infoDiv = doc.DocumentNode.SelectSingleNode("//div[@class='infobox']");
+            if (infoDiv == null) return;
 
             try 
             {
@@ -87,7 +88,6 @@ namespace MVC4LOL.CRAWLER
                         return;   
                     }
                 }
-
             }
             catch
             { 
@@ -101,6 +101,101 @@ namespace MVC4LOL.CRAWLER
             { 
             }
 
+            //try
+            //{
+            //    HtmlNodeCollection descNodes = infoDiv.SelectNodes("descendant::tr/th[contains(.,'Stats')]/following-sibling::td | descendant::tr/th[a[@href='/wiki/Item#Secondary_effects']]/following-sibling::td");
+            //    if (descNodes == null) return;
+            //    String descStr = String.Empty;
+            //    foreach (HtmlNode node in descNodes)
+            //    {
+            //        descStr += node.InnerText.Trim() + System.Environment.NewLine;
+            //    }
+
+            //    Regex regHealthRegen = new Regex("([\\d]+)[\\s]*health regeneration");
+            //    if (regHealthRegen.IsMatch(descStr))
+            //    {
+            //        item.HealthRegen = Decimal.Parse(regHealthRegen.Match(descStr).Groups[1].Value);
+            //        descStr = descStr.Replace(regHealthRegen.Match(descStr).Groups[0].Value, String.Empty);
+            //    }
+
+            //    Regex regHealth = new Regex("([\\d]+)[\\s]*health");
+            //    if (regHealth.IsMatch(descStr))
+            //    {
+            //        item.Health = Decimal.Parse(regHealth.Match(descStr).Groups[1].Value);
+            //    }
+
+            //    Regex regDamage = new Regex("([\\d]+)[\\s]*attack damage");
+            //    if (regDamage.IsMatch(descStr))
+            //    {
+            //        item.Damage = Decimal.Parse(regDamage.Match(descStr).Groups[1].Value);
+            //    }
+
+            //    Regex regAttackSpeed = new Regex("([\\d]+)%?[\\s]*attack speed");
+            //    if (regAttackSpeed.IsMatch(descStr))
+            //    {
+            //        item.AttackSpeed = Decimal.Parse(regAttackSpeed.Match(descStr).Groups[1].Value);
+            //    }
+
+            //    Regex regManaRegen = new Regex("([\\d]+)%?[\\s]*mana regen");
+            //    if (regManaRegen.IsMatch(descStr))
+            //    {
+            //        item.ManaRegen = Decimal.Parse(regManaRegen.Match(descStr).Groups[1].Value);
+            //        descStr = descStr.Replace(regManaRegen.Match(descStr).Groups[0].Value, String.Empty);
+            //    }
+
+            //    Regex regMana = new Regex("([\\d]+)%?[\\s]*mana");
+            //    if (regMana.IsMatch(descStr))
+            //    {
+            //        item.Mana = Decimal.Parse(regMana.Match(descStr).Groups[1].Value);
+            //    }
+
+            //    Regex regArmor = new Regex("([\\d]+)%?[\\s]*armor");
+            //    if (regArmor.IsMatch(descStr))
+            //    {
+            //        item.Armor = Decimal.Parse(regArmor.Match(descStr).Groups[1].Value);
+            //    }
+
+            //    Regex regMagicResist = new Regex("([\\d]+)%?[\\s]*magic resist");
+            //    if (regMagicResist.IsMatch(descStr))
+            //    {
+            //        item.MagicResist = Decimal.Parse(regMagicResist.Match(descStr).Groups[1].Value);
+            //    }
+
+            //    Regex regAbilityPower = new Regex("([\\d]+)%?[\\s]*ability power");
+            //    if (regAbilityPower.IsMatch(descStr))
+            //    {
+            //        item.AbilityPower = Decimal.Parse(regAbilityPower.Match(descStr).Groups[1].Value);
+            //    }
+
+            //    Regex regCritChance = new Regex("([\\d]+)%?[\\s]*critical strike chance");
+            //    if (regCritChance.IsMatch(descStr))
+            //    {
+            //        item.CriticalChance = Decimal.Parse(regCritChance.Match(descStr).Groups[1].Value);
+            //    }
+
+            //    Regex regLifeSteal = new Regex("([\\d]+)%?[\\s]*life steal");
+            //    if (regLifeSteal.IsMatch(descStr))
+            //    {
+            //        item.LifeSteal = Decimal.Parse(regLifeSteal.Match(descStr).Groups[1].Value);
+            //    }
+
+            //    Regex regSpellVamp = new Regex("([\\d]+)%?[\\s]*spell vamp");
+            //    if (regLifeSteal.IsMatch(descStr))
+            //    {
+            //        item.SpellVamp = Decimal.Parse(regSpellVamp.Match(descStr).Groups[1].Value);
+            //    }
+
+            //    Regex regCooldownReduction = new Regex("([\\d]+)%?[\\s]*cooldown reduction");
+            //    if (regLifeSteal.IsMatch(descStr))
+            //    {
+            //        item.CooldownReduction = Decimal.Parse(regCooldownReduction.Match(descStr).Groups[1].Value);
+            //    }
+
+            //}
+            //catch
+            //{ 
+            //}
+
             try
             {
                 String stats = infoDiv.SelectSingleNode("descendant::tr/th[contains(.,'Stats')]/following-sibling::td").InnerText.Trim();
@@ -110,7 +205,7 @@ namespace MVC4LOL.CRAWLER
                     String h = regHealthRegen.Match(stats).Groups[1].Value;
 
                     stats = stats.Replace(regHealthRegen.Match(stats).Groups[0].Value, String.Empty);
-                    item.Health = Decimal.Parse(h);
+                    item.HealthRegen = Decimal.Parse(h);
                 }
 
                 if (stats.Contains("health"))
@@ -258,9 +353,6 @@ namespace MVC4LOL.CRAWLER
 
                 item.Description += desc;
 
-                // refactor
-                // insert string (stats or desc ) as param and run algorithm for both
-                // rename variables ( h, )
                 Regex regLifeSteal = new Regex("([\\d]+)%?[\\s]*life steal");
                 String h = regLifeSteal.Match(desc).Groups[1].Value;
                 item.LifeSteal = Decimal.Parse(h);

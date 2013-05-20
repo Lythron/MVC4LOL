@@ -30,6 +30,31 @@ var builder = function () {
 
         levelingInit(data);
 
+        var mapSelected = $("#selectMap option:selected").text().replace(" ", "").replace("'", "");
+        var itemClass = "." + mapSelected;
+        $("#Items img[id^='itemImage']").not('[class*="Common"]').hide();
+        $("#Items img[id^='itemImage']").filter(itemClass).show();
+
+        $("#selectMap").change(function () {
+            var mapSelected = $("#selectMap option:selected").text().replace(" ","").replace("'",""); 
+            var itemClass = "." + mapSelected;
+            $("#Items img[id^='itemImage']").not('[class*="Common"]').hide();
+            $("#Items img[id^='itemImage']").filter(itemClass).show();
+        });
+
+        // TODO, Combine with map classes, all item tags include, refactor
+        $("#InputItemDamage").change(function () {
+            var selectedItemTags = $("#InputItemDamage:checked");
+            if (selectedItemTags.length > 0) {
+                var tagValue = ".Tag" + selectedItemTags[0].value;
+                $("#Items img[id^='itemImage']").hide();
+                $("#Items img[id^='itemImage']").filter(tagValue).show();
+            }
+            else {
+                $("#Items img[id^='itemImage']").show();
+            }
+        });
+
         $('#Items img[id^="itemImage"]').click(function () {
 
             var div = $('div[id^="divItem"]:not(:has(img)):first');
@@ -40,9 +65,7 @@ var builder = function () {
                 div.html("");
                 updateStatsFromItems();
             });
-
             updateStatsFromItems();
-
         });
     },
 
@@ -62,8 +85,8 @@ var builder = function () {
     },
 
     renderItems = function (data) {
+        
         for (var key in data.Items) {
-
             var item = data.Items[key];
             renderItem(item);
         }
@@ -71,6 +94,16 @@ var builder = function () {
 
     renderItem = function (item) {
         $('#ItemTemplate').tmpl(item).appendTo('#Items');
+
+        for (var prop in item) {
+
+            if ($.inArray(prop, ["Damage", "Health"]) > -1 && item[prop] > 0) 
+            {
+                var tagClass = "Tag" + prop;
+                $('img[id=itemImage' + item.Id + ']').addClass(tagClass);
+            }
+        }
+
     },
 
     updateStatsFromItems = function () {
@@ -92,9 +125,9 @@ var builder = function () {
 
         for (var itemKey in carriedItems) {
             try {
-                var item = carriedItems[itemKey].id.replace("itemImage", "");
+                var itemId = carriedItems[itemKey].id.replace("itemImage", "");
 
-                var intId = parseInt(item)
+                var intId = parseInt(itemId)
 
                 var g = $.grep(_items, function (i) { return i.Id == intId })[0];
 
@@ -119,7 +152,6 @@ var builder = function () {
         if (criticalChance > 100) {
             criticalChance = 100;
         }
-
 
         var lvl = parseInt($("#labelLvl").text());
         adjustLvl(lvl);
@@ -163,7 +195,7 @@ var builder = function () {
         $('#labelMana').text(champ.Mana + champ.ManaPerLvl * level + bonusMana);
         $('#labelManaRegen').text(champ.ManaRegen + champ.ManaRegenPerLvl * level + bonusManaRegen);
         $('#labelDamage').text(champ.Damage + champ.DamagePerLvl * level + bonusDamage);
-        var computedAttackSpeed = champ.AttackSpeed * (1 + champ.AttackSpeedPerLvl / 100 * level + bonusAttackSpeed)
+        var computedAttackSpeed = champ.AttackSpeed * (1 + champ.AttackSpeedPerLvl / 100 * level + bonusAttackSpeed / 100)
         if (computedAttackSpeed > 2.5) {
             computedAttackSpeed = 2.5;
         };

@@ -18,7 +18,7 @@ namespace MVC4LOL.Controllers
             var model = new ChampionBuilderViewModel();
             Int32 latestPatchId = db.PatchVersions.OrderByDescending(o => o.Date).First().Id;
             model.Champion = db.ChampionData.First(o => o.ChampionId == championId && o.PatchVersionId == latestPatchId);
-            model.Items = db.Items.Where(o => o.Availability.Contains("Common") || o.Availability.Contains("Summoner")).ToList();
+            model.Items = db.Items.ToList();
             return View("Builder", model);
         }
 
@@ -27,7 +27,7 @@ namespace MVC4LOL.Controllers
             var model = new ChampionBuilderViewModel();
             Int32 latestPatchId = db.PatchVersions.OrderByDescending(o => o.Date).First().Id;
             model.Champion = db.ChampionData.First(o => o.ChampionId == championId && o.PatchVersionId == latestPatchId);
-            model.Items = db.Items.Where(o => o.Availability.Contains("Common") || o.Availability.Contains("Summoner")).ToList();
+            model.Items = db.Items.ToList();
 
             var jsonResult = Json(ChangeByteArrayToStringForModel(model), JsonRequestBehavior.AllowGet);
             jsonResult.MaxJsonLength = int.MaxValue;
@@ -67,6 +67,7 @@ namespace MVC4LOL.Controllers
                     SpellVamp = i.SpellVamp,
                     AbilityPower = i.AbilityPower,
                     CooldownReduction = i.CooldownReduction,
+                    Availability = i.Availability,
                 }),
                 Champion =  new
                 {
