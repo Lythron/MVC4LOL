@@ -30,6 +30,7 @@ var builder = function () {
 
         levelingInit(data);
 
+        // TODO: Refactor first call
         var mapSelected = $("#selectMap option:selected").text().replace(" ", "").replace("'", "");
         var itemClass = "." + mapSelected;
         $("#Items img[id^='itemImage']").not('[class*="Common"]').hide();
@@ -43,13 +44,23 @@ var builder = function () {
         });
 
         // TODO, Combine with map classes, all item tags include, refactor
-        $("#InputItemDamage").change(function () {
-            var selectedItemTags = $("#InputItemDamage:checked");
-            if (selectedItemTags.length > 0) {
-                var tagValue = ".Tag" + selectedItemTags[0].value;
-                $("#Items img[id^='itemImage']").hide();
-                $("#Items img[id^='itemImage']").filter(tagValue).show();
+        $("input[id^='InputItem']").change(function () {
+            var selectedItemTags = $("input[id^='InputItem']:checked");
+
+            var sb = "";
+
+            for (var i = 0; i < selectedItemTags.length; i++)
+            {
+                var tag = selectedItemTags[i].value;
+                var tagValue = ".Tag" + tag;
+                sb += tagValue;
             }
+
+            if (sb != "") {
+                $("#Items img[id^='itemImage']").hide();
+                $("#Items img[id^='itemImage']").filter(sb).show();
+            }
+            
             else {
                 $("#Items img[id^='itemImage']").show();
             }
@@ -97,13 +108,12 @@ var builder = function () {
 
         for (var prop in item) {
 
-            if ($.inArray(prop, ["Damage", "Health"]) > -1 && item[prop] > 0) 
+            if ($.inArray(prop, ["Damage", "Health", "Armor", "MagicResist", "AttackSpeed", "CriticalChance", "AbilityPower", "LifeSteal", "CooldownReduction", "SpellVamp"]) > -1 && item[prop] > 0) 
             {
                 var tagClass = "Tag" + prop;
                 $('img[id=itemImage' + item.Id + ']').addClass(tagClass);
             }
         }
-
     },
 
     updateStatsFromItems = function () {
