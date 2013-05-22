@@ -258,6 +258,22 @@
     <Compile Include="Migrations\201305160957431_rename.Designer.cs">
       <DependentUpon>201305160957431_rename.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201305211033568_itemBuilds.cs" />
+    <Compile Include="Migrations\201305211033568_itemBuilds.Designer.cs">
+      <DependentUpon>201305211033568_itemBuilds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305211104143_itemBuilds2.cs" />
+    <Compile Include="Migrations\201305211104143_itemBuilds2.Designer.cs">
+      <DependentUpon>201305211104143_itemBuilds2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305211143307_itemSellValue.cs" />
+    <Compile Include="Migrations\201305211143307_itemSellValue.Designer.cs">
+      <DependentUpon>201305211143307_itemSellValue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305211250228_rename1.cs" />
+    <Compile Include="Migrations\201305211250228_rename1.Designer.cs">
+      <DependentUpon>201305211250228_rename1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Champion.cs" />
@@ -494,6 +510,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201305160957431_rename.resx">
       <DependentUpon>201305160957431_rename.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305211033568_itemBuilds.resx">
+      <DependentUpon>201305211033568_itemBuilds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305211104143_itemBuilds2.resx">
+      <DependentUpon>201305211104143_itemBuilds2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305211143307_itemSellValue.resx">
+      <DependentUpon>201305211143307_itemSellValue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305211250228_rename1.resx">
+      <DependentUpon>201305211250228_rename1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

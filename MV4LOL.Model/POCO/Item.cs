@@ -21,6 +21,9 @@ namespace MVC4LOL.Model
         public String Availability { get; set; }
 
         public Int32 Cost { get; set; }
+
+        public Int32 SellValue { get; set; }
+
     }
 
 }

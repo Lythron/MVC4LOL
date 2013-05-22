@@ -43,9 +43,57 @@ namespace MVC4LOL.CRAWLER
             }
         }
 
+        private static Int32 GetItemId(String name)
+        {
+            using (MVC4LOLDb db = new MVC4LOLDb())
+            {
+                try
+                {
+                    Int32 itemId = db.Items.First(o => o.Name == name.Replace("&#39;", "'")).Id;
+                    return itemId;
+                }
+                catch // TODO : Refactor , this is only workaround
+                {
+                    return 0;
+                }
+            }
+        }
+
+        private static void HarvestRecipe(HtmlDocument doc, Int32 itemRecipeId)
+        {
+            
+            HtmlNodeCollection recipe = doc.DocumentNode.SelectNodes("//h2[span[@id='Recipe']]/following-sibling::ul/li");
+            if (recipe == null) return;
+
+            HtmlNode recipeCost = doc.DocumentNode.SelectSingleNode("//h2[span[@id='Recipe']]/following-sibling::ul/li[last()]");
+            
+            foreach (HtmlNode li in recipe)
+            {
+                ItemRecipe itemRecipe = new ItemRecipe();
+                itemRecipe.ItemId = itemRecipeId;
+                itemRecipe.RecipeCost = Decimal.Parse(recipeCost.InnerText.Substring(0, recipeCost.InnerText.IndexOf('g')));
+                // Crashes here on Muramana which is consist only from manamune; ( Seraph Embrace can cause this issue too );
+                HtmlNode component = li.SelectSingleNode("span/a[@href]");
+                if (component != null)
+                {
+                    itemRecipe.ComponentId = GetItemId(component.GetAttributeValue("title", "")); // if null harvest item.
+                    if (itemRecipe.ComponentId == 0) return; // TODO : this is workaround , see above.
+
+                }
+                else { // TODO : refactor;
+                    return;
+                }
+
+                using (MVC4LOLDb db = new MVC4LOLDb())
+                {
+                    db.ItemRecipes.Add(itemRecipe);
+                    db.SaveChanges();
+                }
+            }
+        }
+
         private static void HarvestItem(string url)
         {
-
             HtmlDocument doc = new HtmlDocument();
             Item item = new Item();
 
@@ -81,13 +129,14 @@ namespace MVC4LOL.CRAWLER
             {
                 item.Name = infoDiv.SelectSingleNode("descendant::div/b").InnerText.Trim();
 
-                using (MVC4LOLDb db = new MVC4LOLDb())
-                {
-                    if (db.Items.Select(o => o.Name).Contains(item.Name))
-                    {
-                        return;   
-                    }
-                }
+                // TODO: Uncomment
+                //using (MVC4LOLDb db = new MVC4LOLDb())
+                //{
+                //    if (db.Items.Select(o => o.Name).Contains(item.Name))
+                //    {
+                //        return;
+                //    }
+                //}
             }
             catch
             { 
@@ -199,9 +248,9 @@ namespace MVC4LOL.CRAWLER
             try
             {
                 String stats = infoDiv.SelectSingleNode("descendant::tr/th[contains(.,'Stats')]/following-sibling::td").InnerText.Trim();
-                if (stats.Contains("health regeneration"))
+                if (stats.Contains("health regen"))
                 {
-                    Regex regHealthRegen = new Regex("([\\d]+)[\\s]*health regeneration");
+                    Regex regHealthRegen = new Regex("([\\d]+)[\\s]*health regen");
                     String h = regHealthRegen.Match(stats).Groups[1].Value;
 
                     stats = stats.Replace(regHealthRegen.Match(stats).Groups[0].Value, String.Empty);
@@ -438,11 +487,23 @@ namespace MVC4LOL.CRAWLER
             {
             }
 
+            try
+            {
+                String costStr = infoDiv.SelectSingleNode("descendant::tr/th[contains(.,'Sell') and contains(., 'value')]/following-sibling::td").InnerText.Trim();
+                item.SellValue = Int32.Parse(costStr.Substring(0, costStr.IndexOf("g")));
+            }
+            catch
+            {
+            }
+
             using (MVC4LOLDb db = new MVC4LOLDb())
             {
                 db.Items.Add(item);
                 db.SaveChanges();
             }
+
+            // TODO: put only recipe node in arguments (if exist ); Check if its not already in db.
+            HarvestRecipe(doc, item.Id); 
         }
 
     }

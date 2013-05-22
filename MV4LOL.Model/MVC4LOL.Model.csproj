@@ -44,6 +44,7 @@
     <Compile Include="POCO\Build.cs" />
     <Compile Include="POCO\Champion.cs" />
     <Compile Include="POCO\ChampionData.cs" />
+    <Compile Include="POCO\ItemRecipe.cs" />
     <Compile Include="POCO\Item.cs" />
     <Compile Include="POCO\PatchVersion.cs" />
     <Compile Include="POCO\RunePage.cs" />

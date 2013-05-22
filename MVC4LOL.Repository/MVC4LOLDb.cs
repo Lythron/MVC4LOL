@@ -38,6 +38,8 @@ namespace MVC4LOL.Repository
         public DbSet<RuneType> RuneTypes { get; set; }
         public DbSet<RuneForRunePage> RunesForRunePages { get; set; }
 
+        public DbSet<ItemRecipe> ItemRecipes { get; set; }
+
         IQueryable<T> IMVC4LOLDb.Query<T>()
         {
             return Set<T>();
