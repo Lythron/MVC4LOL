@@ -52,7 +52,7 @@ namespace MVC4LOL.CRAWLER
                     Int32 itemId = db.Items.First(o => o.Name == name.Replace("&#39;", "'")).Id;
                     return itemId;
                 }
-                catch // TODO : Refactor , this is only workaround
+                catch // TODO : Refactor;
                 {
                     return 0;
                 }
@@ -71,12 +71,24 @@ namespace MVC4LOL.CRAWLER
             {
                 ItemRecipe itemRecipe = new ItemRecipe();
                 itemRecipe.ItemId = itemRecipeId;
-                itemRecipe.RecipeCost = Decimal.Parse(recipeCost.InnerText.Substring(0, recipeCost.InnerText.IndexOf('g')));
+                try
+                {
+                    itemRecipe.RecipeCost = Decimal.Parse(recipeCost.InnerText.Substring(0, recipeCost.InnerText.IndexOf('g')));
+                }
+                catch
+                { 
+                }
+
                 // Crashes here on Muramana which is consist only from manamune; ( Seraph Embrace can cause this issue too );
                 HtmlNode component = li.SelectSingleNode("span/a[@href]");
                 if (component != null)
                 {
                     itemRecipe.ComponentId = GetItemId(component.GetAttributeValue("title", "")); // if null harvest item.
+
+                    // START HERE : delete db. check how it behaves with 2 nested recipes : triforce > zeal > ...
+                    // next step:
+                    // if null HarvestItem ( component.GetAttributeValue("href","");
+
                     if (itemRecipe.ComponentId == 0) return; // TODO : this is workaround , see above.
 
                 }
@@ -127,16 +139,15 @@ namespace MVC4LOL.CRAWLER
 
             try
             {
-                item.Name = infoDiv.SelectSingleNode("descendant::div/b").InnerText.Trim();
-
-                // TODO: Uncomment
-                //using (MVC4LOLDb db = new MVC4LOLDb())
-                //{
-                //    if (db.Items.Select(o => o.Name).Contains(item.Name))
-                //    {
-                //        return;
-                //    }
-                //}
+                item.Name = infoDiv.SelectSingleNode("descendant::div/b").InnerText.Trim().Replace("&#39;", "'" );
+                
+                using (MVC4LOLDb db = new MVC4LOLDb())
+                {
+                    if (db.Items.Select(o => o.Name).Contains(item.Name))
+                    {
+                        return;
+                    }
+                }
             }
             catch
             { 
@@ -144,7 +155,12 @@ namespace MVC4LOL.CRAWLER
 
             try
             {
-                item.Availability = infoDiv.SelectSingleNode("descendant::tr/th[contains(.,'Availability')]/following-sibling::td").InnerText.Trim();
+                String mapString = infoDiv.SelectSingleNode("descendant::tr/th[contains(.,'Availability')]/following-sibling::td")
+                                     .InnerText.Trim()
+                                     .Replace("Summoner's Rift", " SummonersRift ")
+                                     .Replace("Howling Abyss", " HowlingAbyss ")
+                                     .Replace("Twisted Treeline", " TwistedTreeline ");
+                item.Availability = Regex.Replace(mapString, @"\s+", " ");
             }
             catch
             { 
@@ -374,7 +390,7 @@ namespace MVC4LOL.CRAWLER
             {
             }
             
-            // only IE and its in passives not stats.
+            // only InfinityEdge and its in passives not stats.
             //try
             //{
             //    String stats = infoDiv.SelectSingleNode("descendant::tr/th[contains(.,'Stats')]/following-sibling::td").InnerText.Trim();

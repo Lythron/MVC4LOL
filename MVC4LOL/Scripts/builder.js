@@ -15,6 +15,8 @@ var itemsLifeSteal = 0;
 var itemsSpellVamp = 0;
 var itemsCooldownReduction = 0;
 
+var goldSpentOnItems = 0;
+
 var builder = function () {
     init = function (championId) {
         dataservice.loadBuilder(championId, renderStaff)
@@ -22,7 +24,7 @@ var builder = function () {
 
     renderStaff = function (data) {
 
-        _items = data.Items;
+        _items = data.Items; 
 
         renderChampion(data.Champion);
 
@@ -72,8 +74,37 @@ var builder = function () {
 
             $("#" + this.id + ":first").clone().appendTo(div);
 
+            var currentItemId = parseInt(this.id.replace("itemImage",""));
+            var possibleItemUpgrades = [];
             div.click(function () {
+                // divide into smaller functions
                 div.html("");
+                
+                for (var i = 0; i < data.ItemRecipes.length; i++) { // add filter by map
+                    var itemRecipe = data.ItemRecipes[i]; 
+                    if (itemRecipe.ComponentId == currentItemId) {
+                        var l = possibleItemUpgrades.length
+                        possibleItemUpgrades[possibleItemUpgrades.length] = itemRecipe.ItemId;
+
+                        var item = $.grep(data.Items, function (e) { return e.Id == itemRecipe.ItemId; });
+
+                        $('#ItemTemplate').tmpl(item).appendTo(div); // TODO change destination feel of select
+
+                        // test
+                        //div.html("<select><option>1</option><option>2</option></select>");
+                        //var image = $('#ItemTemplate').tmpl(item);
+
+                        //var tmpContent = $('<option/>', {
+                        //    html: image
+                        //});
+
+                        //$('<select/>', {
+                        //    id: 'someID',
+                        //    className: 'foobar',
+                        //    html: tmpContent
+                        //}).appendTo(div);
+                    }
+                }
                 updateStatsFromItems();
             });
             updateStatsFromItems();
@@ -132,6 +163,7 @@ var builder = function () {
         itemsLifeSteal = 0;
         itemsSpellVamp = 0;
         itemsCooldownReduction = 0;
+        goldSpentOnItems = 0;
 
         for (var itemKey in carriedItems) {
             try {
@@ -154,6 +186,8 @@ var builder = function () {
                 itemsLifeSteal += g.LifeSteal;
                 itemsSpellVamp += g.SpellVamp;
                 itemsCooldownReduction += g.CooldownReduction;
+
+                goldSpentOnItems += g.Cost;
             }
             catch (excepion) {
             };
@@ -222,6 +256,8 @@ var builder = function () {
             computedCooldownReduction = 40;
         }
         $('#labelCooldownReduction').text(computedCooldownReduction);
+
+        $("#LabelGold").text(goldSpentOnItems);
 
         renderDamage();
         renderHealth();

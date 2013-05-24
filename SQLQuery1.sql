@@ -7,32 +7,27 @@ select baseattackSpeed, AttackSpeed from ChampionData;
 
 select Name, CooldownReduction from item where CooldownReduction > 0;
 
-select Name from item where HealthRegen > 0; 
-select * from item where SellValue = 0;
-select max(id) from item; -- 4811
+select * from item;
+--delete from item;
 
+select * from itemRecipe
 
+select distinct [availability] from item;
 
+update item set Name = Replace(Name, '&#39;', '''' ) -- now in code;
 
-select * from item where Name like '%&#39;%'
-update item set Name = Replace(Name, '&#39;', '''' ) -- do it in code
-
-select i.Name Item , j.Name Component, r.RecipeCost as Cost
+select i.Name Item, i.Cost , j.Name Component, j.Cost, r.RecipeCost as Cost
 from ItemRecipe r
 left join item i on r.ItemId = i.Id 
 left join item j on r.ComponentId = j.Id
-
-
 
 --select REPLACE('Summoner''s Rift', ' Summoner''sRift ', )  from item
 update item set [Availability] = Replace([Availability], 'Summoner''s Rift', ' Summoner''sRift ')
 update item set [Availability] = Replace([Availability], 'Howling Abyss', ' HowlingAbyss ')
 update item set [Availability] = Replace([Availability], 'Twisted Treeline', ' TwistedTreeline ')
 update item set [Availability] = Replace([Availability], '  ', ' ')
-update item set [Availability] = Replace([Availability], 'Summoner''sRift', 'SummonersRift') -- implement in crawler
+update item set [Availability] = Replace([Availability], 'Summoner''sRift', 'SummonersRift') --now done in crawler : TEST
 update item set Availability = LTRIM(RTRIM(Availability));
-
-
 
 select * from PatchVersion;
 

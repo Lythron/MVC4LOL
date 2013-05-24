@@ -28,6 +28,9 @@
 <input type="button" name="buttonLvlDown" id="buttonLvlDown" value="LvlDown" />
 <label id="labelLvl" >1</label>
 
+
+gold spent:
+<label id="LabelGold">0</label>
 Currently carried items:
 <br />
 @for (var i = 1; i<=6; i++)
@@ -287,6 +290,17 @@ Autoattack damage per second :
 </div>
 <div id="Items">
 </div>
+
+
+@*TEMPLATES*@
+
+
+@*<script id="ItemRecipesTemplate" type="text/x-jquery-tmpl" >
+    <option>
+    <img id="itemImage${Id}" class="${Availability}" src="data:image/png;base64, ${Image}" height="60" alt="${Name}" title="${Description}" />
+    </option>
+</script>*@
+
 <script id="ItemTagsSelectTemplate" type="text/x-jquery-tmpl">
     <div style="float:left">
         <label for="Select${Name}" style="white-space:nowrap; float:left;margin-right:15px" >${Name}</label> 

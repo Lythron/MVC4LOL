@@ -18,7 +18,7 @@ namespace MVC4LOL.Controllers
             var model = new ChampionBuilderViewModel();
             Int32 latestPatchId = db.PatchVersions.OrderByDescending(o => o.Date).First().Id;
             model.Champion = db.ChampionData.First(o => o.ChampionId == championId && o.PatchVersionId == latestPatchId);
-            model.Items = db.Items.ToList();
+            //model.Items = db.Items.ToList();
             return View("Builder", model);
         }
 
@@ -28,7 +28,7 @@ namespace MVC4LOL.Controllers
             Int32 latestPatchId = db.PatchVersions.OrderByDescending(o => o.Date).First().Id;
             model.Champion = db.ChampionData.First(o => o.ChampionId == championId && o.PatchVersionId == latestPatchId);
             model.Items = db.Items.ToList();
-
+            model.ItemRecipes = db.ItemRecipes.ToList();
             var jsonResult = Json(ChangeByteArrayToStringForModel(model), JsonRequestBehavior.AllowGet);
             jsonResult.MaxJsonLength = int.MaxValue;
             return jsonResult;
@@ -42,6 +42,8 @@ namespace MVC4LOL.Controllers
 
             var res = ml.Select(o => new
             {
+                ItemRecipes = o.ItemRecipes, 
+
                 Items = o.Items.Select(i => new {
                     Image = i.Image != null ? Convert.ToBase64String(i.Image) : String.Empty,
                     Health = i.Health,

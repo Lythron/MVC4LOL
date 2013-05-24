@@ -10,5 +10,6 @@ namespace MVC4LOL.Models.ViewModels
     {
         public ChampionData Champion { get; set; }
         public List<Item> Items { get; set; }
+        public List<ItemRecipe> ItemRecipes { get; set; }
     }
 }
